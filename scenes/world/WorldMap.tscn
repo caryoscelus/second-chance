@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://gfx/world/map.png" type="Texture" id=1]
-[ext_resource path="res://code/world/zones.gd" type="Script" id=2]
-[ext_resource path="res://scenes/world/Zone.tscn" type="PackedScene" id=3]
-[ext_resource path="res://gfx/world/zone-00.png" type="Texture" id=4]
-[ext_resource path="res://gfx/world/zone-00.pbm" type="BitMap" id=5]
-[ext_resource path="res://gfx/world/zone-01.png" type="Texture" id=6]
-[ext_resource path="res://gfx/world/zone-01.pbm" type="BitMap" id=7]
+[ext_resource path="res://code/world/WorldMap.gd" type="Script" id=2]
+[ext_resource path="res://code/world/zones.gd" type="Script" id=3]
+[ext_resource path="res://scenes/world/Zone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gfx/world/zone-00.png" type="Texture" id=5]
+[ext_resource path="res://gfx/world/zone-00.pbm" type="BitMap" id=6]
+[ext_resource path="res://gfx/world/zone-01.png" type="Texture" id=7]
+[ext_resource path="res://gfx/world/zone-01.pbm" type="BitMap" id=8]
+[ext_resource path="res://scenes/ui/ShowZoneInfo.tscn" type="PackedScene" id=9]
 
 [node name="WorldMap" type="TextureFrame"]
 
@@ -22,6 +24,7 @@ margin/right = 0.0
 margin/bottom = 0.0
 texture = ExtResource( 1 )
 stretch_mode = 0
+script/script = ExtResource( 2 )
 
 [node name="zones" type="Container" parent="."]
 
@@ -33,14 +36,14 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
-script/script = ExtResource( 2 )
+script/script = ExtResource( 3 )
 
-[node name="gov" parent="zones" instance=ExtResource( 3 )]
+[node name="gov" parent="zones" instance=ExtResource( 4 )]
 
 margin/right = -1280.0
 margin/bottom = -720.0
-textures/hover = ExtResource( 4 )
-textures/click_mask = ExtResource( 5 )
+textures/hover = ExtResource( 5 )
+textures/click_mask = ExtResource( 6 )
 id = "gov"
 
 [node name="name" parent="zones/gov"]
@@ -51,10 +54,10 @@ margin/right = 590.0
 margin/bottom = 524.0
 text = "gov"
 
-[node name="europe" parent="zones" instance=ExtResource( 3 )]
+[node name="europe" parent="zones" instance=ExtResource( 4 )]
 
-textures/hover = ExtResource( 6 )
-textures/click_mask = ExtResource( 7 )
+textures/hover = ExtResource( 7 )
+textures/click_mask = ExtResource( 8 )
 id = "europe"
 
 [node name="name" parent="zones/europe"]
@@ -65,7 +68,46 @@ margin/right = 197.0
 margin/bottom = 282.0
 text = "europe"
 
+[node name="show_stats_button" type="Button" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 48.0
+margin/top = 664.0
+margin/right = 1152.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "show stats"
+flat = false
+
+[node name="stats" type="WindowDialog" parent="."]
+
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 400.0
+margin/top = 80.0
+margin/right = 400.0
+margin/bottom = 80.0
+popup/exclusive = false
+window/title = "stats"
+__meta__ = { "_edit_group_":true }
+
+[node name="ShowZoneInfo" parent="stats" instance=ExtResource( 9 )]
+
 [connection signal="zone_clicked" from="zones" to="zones" method="_on_zone_clicked"]
+
+[connection signal="pressed" from="show_stats_button" to="." method="_on_show_stats_button_pressed"]
 
 
 [editable path="zones/gov"]

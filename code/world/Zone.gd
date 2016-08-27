@@ -1,30 +1,7 @@
 # zone info
-extends Node
+extends TextureButton
 
-var id = 0
-var name = ""
+export(String) var id
 
-var allies = []
-
-var money = 0
-
-var reputation = {
-	gov = 0,
-	antiprog = 0,
-	locals = 0,
-}
-
-var employees = {
-	workers = 0,
-	engineers = 0,
-	scientists = 0,
-}
-
-var tech = {
-	rocket = 0.0,
-	nuclear = 0.0,
-	computer = 0.0,
-	excavate = 0.0,
-}
-
-
+func _on_pressed():
+	get_parent().emit_signal("zone_clicked", self.id)

@@ -6,12 +6,12 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 249, 277, 106, 310, 145, 197 )
+points = Vector2Array( 217, 302, 86, 326, 191, 164 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 381, 285, 224, 207, 327, 193 )
+points = Vector2Array( 213, 332, 241, 400, 91, 398, 92, 334 )
 
 [node name="WorldMap" type="TextureFrame"]
 
@@ -65,14 +65,15 @@ invert/border = 100.0
 [node name="zone_0" type="CollisionPolygon2D" parent="zones"]
 
 build_mode = 0
-polygon = Vector2Array( 249, 277, 106, 310, 145, 197 )
+polygon = Vector2Array( 217, 302, 86, 326, 191, 164 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
 [node name="zone_1" type="CollisionPolygon2D" parent="zones"]
 
+transform/scale = Vector2( 1, 1 )
 build_mode = 0
-polygon = Vector2Array( 327, 193, 224, 207, 381, 285 )
+polygon = Vector2Array( 92, 334, 91, 398, 241, 400, 213, 332 )
 shape_range = Vector2( 1, 1 )
 trigger = false
 

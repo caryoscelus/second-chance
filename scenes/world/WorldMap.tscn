@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://gfx/world-map.png" type="Texture" id=1]
+[ext_resource path="res://code/world/zones.gd" type="Script" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 249, 277, 106, 310, 145, 197 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 381, 285, 224, 207, 327, 193 )
 
 [node name="WorldMap" type="TextureFrame"]
 
@@ -16,5 +27,59 @@ margin/right = 0.0
 margin/bottom = 0.0
 texture = ExtResource( 1 )
 stretch_mode = 0
+
+[node name="zones" type="StaticBody2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 2 )
+
+[node name="highlight" type="Polygon2D" parent="zones"]
+
+visibility/visible = false
+visibility/opacity = 0.5
+visibility/self_opacity = 0.5
+polygon = Vector2Array(  )
+uv = Vector2Array(  )
+color = Color( 0.839844, 0.360819, 0.150909, 0.536865 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="zone_0" type="CollisionPolygon2D" parent="zones"]
+
+build_mode = 0
+polygon = Vector2Array( 249, 277, 106, 310, 145, 197 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="zone_1" type="CollisionPolygon2D" parent="zones"]
+
+build_mode = 0
+polygon = Vector2Array( 327, 193, 224, 207, 381, 285 )
+shape_range = Vector2( 1, 1 )
+trigger = false
+
+[connection signal="input_event" from="zones" to="zones" method="_on_input_event"]
+
+[connection signal="mouse_enter" from="zones" to="zones" method="_on_mouse_enter"]
+
+[connection signal="mouse_exit" from="zones" to="zones" method="_on_mouse_exit"]
 
 

@@ -1,10 +1,14 @@
 extends Node
 
-var id = ""
+var id = "" setget set_id
+var name = ""
+
+func set_id(new_id):
+	id = new_id
+	if not name:
+		name = id
 
 var allies = []
-
-var money = 0
 
 var reputation = {
 	gov = 0,
@@ -25,3 +29,8 @@ var tech = {
 	excavate = 0.0,
 }
 
+var resources = {
+	money = 0,
+	weapons = 0,
+	excavators = 0,
+}

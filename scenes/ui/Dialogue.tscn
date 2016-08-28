@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://code/ui/Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://fonts/averia/Averia-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/averia/Averia-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://gfx/portraits/aalto.png" type="Texture" id=4]
+[ext_resource path="res://gfx/portraits/sasha.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -77,5 +79,102 @@ margin/top = 32.0
 margin/right = 16.0
 margin/bottom = 400.0
 stretch_mode = 3
+
+[node name="choice_container" type="CenterContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+use_top_left = false
+
+[node name="choice" type="WindowDialog" parent="choice_container"]
+
+rect/min_size = Vector2( 320, 320 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 320.0
+margin/bottom = 320.0
+popup/exclusive = false
+window/title = ""
+__meta__ = { "_edit_group_":true }
+
+[node name="container" type="VBoxContainer" parent="choice_container/choice"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+alignment = 1
+
+[node name="label" type="Label" parent="choice_container/choice/container"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 15.0
+margin/right = 320.0
+margin/bottom = 29.0
+text = "Question"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="a" type="Button" parent="choice_container/choice/container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 33.0
+margin/right = 320.0
+margin/bottom = 167.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "choice a"
+icon = ExtResource( 4 )
+flat = false
+
+[node name="b" type="Button" parent="choice_container/choice/container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 171.0
+margin/right = 320.0
+margin/bottom = 305.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "choice b"
+icon = ExtResource( 5 )
+flat = false
+
+[connection signal="popup_hide" from="choice_container/choice" to="." method="_on_choice_popup_hidden"]
+
+[connection signal="pressed" from="choice_container/choice/container/a" to="." method="made_choice" binds= [ 0 ]]
+
+[connection signal="pressed" from="choice_container/choice/container/b" to="." method="made_choice" binds= [ 1 ]]
 
 

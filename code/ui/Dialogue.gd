@@ -1,6 +1,6 @@
 extends Panel
 
-signal finished_story
+signal finished_story(result)
 
 var left_speaker setget set_left
 var right_speaker setget set_right
@@ -8,9 +8,14 @@ var right_speaker setget set_right
 onready var textbox = get_node("textbox")
 onready var left_portrait = get_node("left")
 onready var right_portrait = get_node("right")
+onready var choice_popup = get_node("choice_container/choice")
 
 var story
 var story_pos
+
+var choice_options
+var choice_results = []
+var popup_finished = true
 
 var all_text = ""
 
@@ -20,7 +25,10 @@ func _ready():
 		advance_story()
 
 func _input(event):
-	if event.is_pressed():
+	if not popup_finished:
+		return
+	if event.is_action_pressed("advance_story"):
+		get_tree().set_input_as_handled()
 		advance_story()
 
 func load_story(new_story):
@@ -35,6 +43,9 @@ func advance_story():
 		emit_signal("finished_story")
 		return
 	var scene = story[story_pos]
+	if "choices" in scene:
+		choice(scene.text, scene.choices[0], scene.choices[1])
+		return
 	if scene.clear:
 		clear()
 	if "speaker" in scene:
@@ -71,6 +82,37 @@ func say(lr, text):
 		bb = "[right]"+name+"\n[b]"+text+"[/b][/right]\n"
 	all_text += bb
 	textbox.parse_bbcode(all_text)
+
+func choice(text, option_a, option_b):
+	choice_options = [option_a.result, option_b.result]
+	choice_popup.get_node("container/label").set_text(text)
+	var a = choice_popup.get_node("container/a")
+	var b = choice_popup.get_node("container/b")
+	
+	a.set_text(option_a.text)
+	if "image" in option_a:
+		a.set_button_icon(load(option_a.image))
+	else:
+		a.set_button_icon(null)
+	
+	b.set_text(option_b.text)
+	if "image" in option_b:
+		b.set_button_icon(load(option_b.image))
+	else:
+		b.set_button_icon(null)
+	
+	popup_finished = false
+	
+	choice_popup.call_deferred("popup_centered")
+
+func made_choice(i):
+	popup_finished = true
+	choice_results.append(choice_options[i])
+	choice_popup.set_hidden(true)
+
+func _on_choice_popup_hidden():
+	if not popup_finished:
+		choice_popup.call_deferred("popup_centered")
 
 func clear():
 	all_text = ""

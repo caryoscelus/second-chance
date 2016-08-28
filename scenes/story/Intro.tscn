@@ -9,4 +9,6 @@
 
 script/script = ExtResource( 2 )
 
+[connection signal="timeout" from="timer" to="." method="timer_tick"]
+
 

@@ -50,12 +50,17 @@ func advance_story():
 	wait_for_click = scene.wait
 	if "picture" in scene:
 		load_picture(scene.picture)
+	else:
+		load_picture(null)
 	#if "bg_color" in scene:
 		#set_bg_color(scene.bg_color)
 	get_node("timer").start()
 
 func load_picture(path):
-	picture.set_texture(load(path))
+	if path:
+		picture.set_texture(load(path))
+	else:
+		picture.set_texture(null)
 
 func timer_tick():
 	if not wait_for_click:

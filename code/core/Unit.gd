@@ -54,8 +54,9 @@ func turnover():
 		bunch.turnover(scientist_salary)
 
 func pass_time():
-	work()
+	var results = work()
 	turnover()
+	return results
 
 func get_amount(employees):
 	var total = 0
@@ -66,6 +67,6 @@ func get_amount(employees):
 func get_power(employees):
 	var total = 0
 	for bunch in employees:
-		var group = EmployeeGroups.get(bunch.egroup)
+		var group = EmployeeGroups.get_group(bunch.egroup)
 		total += bunch.amount * group.skill
 	return total

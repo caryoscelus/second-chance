@@ -45,7 +45,7 @@ button/1/text = "resources"
 button/1/icon = null
 button/selected = 0
 
-[node name="advance_time" type="Button" parent="." groups=[ "persistent" ]]
+[node name="pass_time" type="Button" parent="." groups=[ "persistent" ]]
 
 anchor/left = 1
 anchor/top = 1
@@ -65,6 +65,10 @@ shortcut = null
 text = "next month"
 flat = false
 
+[connection signal="time_passed" from="." to="ResourceOverview" method="update_all"]
+
 [connection signal="button_selected" from="switch" to="." method="select_tab"]
+
+[connection signal="pressed" from="pass_time" to="." method="pass_time"]
 
 

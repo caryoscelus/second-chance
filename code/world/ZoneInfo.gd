@@ -20,3 +20,11 @@ var scientists = 0
 var resources = Resources.new()
 
 var units = []
+
+func pass_time():
+	for unit in units:
+		add_resources(unit.pass_time())
+
+func add_resources(res):
+	for r in ["gold", "rocket"]:
+		resources[r] += res[r]

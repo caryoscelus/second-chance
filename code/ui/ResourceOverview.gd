@@ -18,6 +18,9 @@ func _ready():
 
 func set_zone(new_zone):
 	zone = ZoneInfos.get_zone(new_zone)
+	update_all()
+
+func update_all():
 	update_resources()
 	update_units()
 	update_unit_editor()

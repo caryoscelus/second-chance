@@ -20,6 +20,7 @@ func set_zone(new_zone):
 	zone = ZoneInfos.get_zone(new_zone)
 	update_resources()
 	update_units()
+	update_unit_editor()
 	update_groups()
 
 func update_resources():
@@ -62,30 +63,33 @@ func create_new_unit(type):
 	elif type == "research":
 		unit = ResearchUnit.new()
 	zone.units.append(unit)
-	edit_unit(unit)
-
-func back_to_unit_list():
-	unit_editor.set_hidden(true)
-	units.set_hidden(false)
 	update_units()
+	edit_unit(unit)
 
 func remove_unit():
 	zone.units.erase(editing_unit)
-	back_to_unit_list()
+	editing_unit = null
+	update_units()
+	update_unit_editor()
 
 func edit_unit(unit):
-	units.set_hidden(true)
 	editing_unit = unit
 	update_unit_editor()
-	unit_editor.set_hidden(false)
 
 func update_unit_editor():
 	var bunches = unit_editor.get_node("content/bunches")
 	var remove = unit_editor.get_node("content/remove")
 	var salary = unit_editor.get_node("salary")
+	var type = unit_editor.get_node("type")
 	
 	bunches.clear()
 	remove.clear()
+	
+	if not editing_unit:
+		type.set_text("SELECT UNIT TO EDIT")
+		return
+	
+	type.set_text(editing_unit.type)
 	
 	var all_bunches = editing_unit.workers + editing_unit.engineers + editing_unit.scientists
 	
@@ -109,16 +113,18 @@ func remove_unit_bunch(n):
 	update_unit_editor()
 
 func add_unit_bunch(group):
-	if unit_editor.is_hidden():
+	if not editing_unit:
 		return
 	var bunch = Unit.new_bunch(group.id, 10)
 	editing_unit[group.type+"s"].append(bunch)
+	update_units()
 	update_unit_editor()
 
 func change_salary(text, who):
 	var salary = text.to_int()
 	if salary:
 		editing_unit[who+"_salary"] = salary
+		update_units()
 	else:
 		update_unit_editor()
 

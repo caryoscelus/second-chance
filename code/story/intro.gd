@@ -3,7 +3,7 @@ extends Node
 var story = []
 
 func _ready():
-	set_timer(3)
+	set_timer(5)
 	scene("<Second Chance>")
 	scene("a ludum dare 36 game by caryoscelus")
 	scene("made in 48 hours time span")

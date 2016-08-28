@@ -8,6 +8,8 @@ var story_pos = 0
 onready var text = get_node("container/text")
 onready var picture = get_node("container/picture")
 onready var bg = get_node("bg")
+onready var old = get_node("old")
+onready var animation = get_node("animation")
 
 func _ready():
 	set_process_input(true)
@@ -33,6 +35,17 @@ func advance_story():
 		return
 	var scene = story[story_pos]
 	get_node("timer").set_wait_time(scene.timer)
+	
+	var viewport = get_node("/root")
+	viewport.queue_screen_capture()
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	var image = viewport.get_screen_capture()
+	var texture = ImageTexture.new()
+	texture.create_from_image(image)
+	old.set_texture(texture)
+	animation.play("fadeout")
+	
 	text.set_text(scene.text)
 	wait_for_click = scene.wait
 	if "picture" in scene:

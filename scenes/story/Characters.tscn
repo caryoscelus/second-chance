@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://code/vn/Characters.gd" type="Script" id=1]
+[ext_resource path="res://code/vn/Speaker.gd" type="Script" id=2]
+
+[node name="Characters" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="leader" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+name = "The Great Leader"
+portrait = "res://gfx/portraits/leader.png"
+
+

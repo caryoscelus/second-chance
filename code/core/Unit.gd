@@ -5,9 +5,9 @@ var type
 var workers = []
 var engineers = []
 var scientists = []
-var worker_salary
-var engineer_salary
-var scientist_salary
+var worker_salary = 0
+var engineer_salary = 0
+var scientist_salary = 0
 
 class Bunch:
 	var egroup

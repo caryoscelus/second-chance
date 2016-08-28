@@ -228,16 +228,95 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="content" type="HBoxContainer" parent="unit_editor"]
+[node name="salary_text" type="Label" parent="unit_editor"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 84.0
+margin/right = 400.0
+margin/bottom = 98.0
+text = "Salary (workers/engineers/scientists):"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="salary" type="HBoxContainer" parent="unit_editor"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 84.0
+margin/top = 102.0
 margin/right = 400.0
-margin/bottom = 166.0
+margin/bottom = 126.0
+alignment = 1
+
+[node name="workers" type="LineEdit" parent="unit_editor/salary"]
+
+hint/tooltip = "Worker salary"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 109.0
+margin/top = 0.0
+margin/right = 167.0
+margin/bottom = 24.0
+placeholder/text = "worker"
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="engineers" type="LineEdit" parent="unit_editor/salary"]
+
+hint/tooltip = "Engineer salary"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 171.0
+margin/top = 0.0
+margin/right = 229.0
+margin/bottom = 24.0
+placeholder/text = "engineer"
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="scientists" type="LineEdit" parent="unit_editor/salary"]
+
+hint/tooltip = "Scientist salary"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 233.0
+margin/top = 0.0
+margin/right = 291.0
+margin/bottom = 24.0
+placeholder/text = "scientist"
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="content" type="HBoxContainer" parent="unit_editor"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 130.0
+margin/right = 400.0
+margin/bottom = 212.0
 alignment = 1
 
 [node name="bunches" type="VButtonArray" parent="unit_editor/content"]
@@ -335,6 +414,12 @@ align = 0
 [connection signal="pressed" from="unit_editor/back" to="." method="back_to_unit_list"]
 
 [connection signal="pressed" from="unit_editor/remove" to="." method="remove_unit"]
+
+[connection signal="text_entered" from="unit_editor/salary/workers" to="." method="change_salary" binds= [ "worker" ]]
+
+[connection signal="text_entered" from="unit_editor/salary/engineers" to="." method="change_salary" binds= [ "engineer" ]]
+
+[connection signal="text_entered" from="unit_editor/salary/scientists" to="." method="change_salary" binds= [ "scientist" ]]
 
 [connection signal="button_selected" from="unit_editor/content/remove" to="." method="remove_unit_bunch"]
 

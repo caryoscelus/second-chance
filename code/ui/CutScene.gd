@@ -58,7 +58,7 @@ func advance_story():
 
 func load_picture(path):
 	if path:
-		picture.set_texture(load(path))
+		picture.set_texture(load("res://gfx/illustrations/%s.png"%path))
 	else:
 		picture.set_texture(null)
 

@@ -6,8 +6,10 @@ export(String, FILE, "*.tscn") var intro_dialogue
 
 onready var pc_portrait_container = get_node("pc_portrait")
 onready var pc_portrait = get_node("pc_portrait/portrait")
+onready var aircraft_player = get_node("WorldMap/aircraft/player")
 
 var dialogue
+var is_intro_dialogue = true
 
 func _ready():
 	Characters.connect("pc_changed", self, "update_pc_portrait")
@@ -26,6 +28,10 @@ func load_dialogue(path):
 	dialogue.connect("finished_story", self, "end_of_dialogue")
 
 func end_of_dialogue(results):
+	# meh
+	if is_intro_dialogue:
+		is_intro_dialogue = false
+		aircraft_player.play("go_europa")
 	remove_child(dialogue)
 	dialogue.queue_free()
 

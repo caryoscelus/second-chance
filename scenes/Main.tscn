@@ -1,11 +1,29 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://code/ui/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/world/WorldMap.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/ui/ResourceOverview.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/ui/EventLog.tscn" type="PackedScene" id=4]
-[ext_resource path="res://gfx/ui/portrait_frame.png" type="Texture" id=5]
-[ext_resource path="res://gfx/portraits/akira.png" type="Texture" id=6]
+[ext_resource path="res://gfx/world/aircraft.png" type="Texture" id=3]
+[ext_resource path="res://scenes/ui/ResourceOverview.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/ui/EventLog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gfx/ui/portrait_frame.png" type="Texture" id=6]
+[ext_resource path="res://gfx/portraits/akira.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "go_europa"
+length = 3.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5, 1, 2, 3.5 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 545.116, 513.195 ), Vector2( 515.957, 505.521 ), Vector2( 459.788, 477.795 ), Vector2( 295.885, 389.193 ), Vector2( 176.794, 279.924 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:transform/rot")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 2, 3.5 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 63.9106, 47.6431, 42.0998 ] }
 
 [node name="Main" type="Container"]
 
@@ -24,7 +42,25 @@ intro_dialogue = "res://scenes/story/IntroDialogue.tscn"
 
 [node name="WorldMap" parent="." instance=ExtResource( 2 )]
 
-[node name="ResourceOverview" parent="." instance=ExtResource( 3 )]
+[node name="aircraft" type="Sprite" parent="WorldMap"]
+
+transform/pos = Vector2( 545.116, 513.195 )
+transform/rot = 63.9106
+transform/scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+
+[node name="player" type="AnimationPlayer" parent="WorldMap/aircraft"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/go_europa = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="ResourceOverview" parent="." instance=ExtResource( 4 )]
 
 visibility/visible = false
 
@@ -69,7 +105,9 @@ shortcut = null
 text = "next month"
 flat = false
 
-[node name="EventLog" parent="." groups=[ "persistent" ] instance=ExtResource( 4 )]
+[node name="EventLog" parent="." groups=[ "persistent" ] instance=ExtResource( 5 )]
+
+visibility/visible = false
 
 [node name="show_log" type="Button" parent="." groups=[ "persistent" ]]
 
@@ -92,6 +130,7 @@ flat = false
 
 [node name="pc_portrait" type="TextureFrame" parent="." groups=[ "persistent" ]]
 
+editor/display_folded = true
 visibility/visible = false
 anchor/top = 1
 anchor/bottom = 1
@@ -103,7 +142,7 @@ margin/left = 26.0
 margin/top = 166.0
 margin/right = 166.0
 margin/bottom = 26.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 stretch_mode = 0
 
 [node name="portrait" type="TextureFrame" parent="pc_portrait" groups=[ "persistent" ]]
@@ -118,7 +157,7 @@ margin/left = 6.0
 margin/top = 134.0
 margin/right = 134.0
 margin/bottom = 6.0
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 stretch_mode = 0
 
 [connection signal="time_passed" from="." to="ResourceOverview" method="update_all"]

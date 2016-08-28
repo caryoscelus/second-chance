@@ -70,3 +70,6 @@ func get_power(employees):
 		var group = EmployeeGroups.get_group(bunch.egroup)
 		total += bunch.amount * group.skill
 	return total
+
+func get_salary():
+	return worker_amount()*worker_salary + engineer_amount()*engineer_salary + scientist_amount()*scientist_salary

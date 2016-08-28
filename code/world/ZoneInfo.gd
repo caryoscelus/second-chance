@@ -2,6 +2,9 @@ extends Node
 
 const Resources = preload("../core/Resources.gd")
 
+# TODO: depend on reputation
+var max_credit = 10000
+
 export(String) var id
 export(String) var name
 
@@ -23,8 +26,17 @@ var units = []
 
 func pass_time():
 	for unit in units:
+		spend_money(unit.get_salary())
 		add_resources(unit.pass_time())
+	check_budget()
 
 func add_resources(res):
 	for r in ["gold", "rocket"]:
 		resources[r] += res[r]
+
+func spend_money(amount):
+	resources.gold -= amount
+
+func check_budget():
+	if resources.gold < -max_credit:
+		print("GAMEOVER: BUDGET")

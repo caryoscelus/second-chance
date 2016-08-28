@@ -32,6 +32,7 @@ func pass_time():
 	check_budget()
 
 func add_unit(unit):
+	unit.is_logged = is_logged
 	units.append(unit)
 	write_log("[b]zone %s[/b]: added %s unit"%[name, unit.type])
 

@@ -9,16 +9,18 @@ var worker_salary = 0
 var engineer_salary = 0
 var scientist_salary = 0
 
+var is_logged = false
+
 class Bunch:
 	var egroup
 	var amount
 	
 	func turnover(salary):
 		var group = EmployeeGroups.get_group(egroup)
-		var quit_percent = randf()/(salary/group.salary_min)
-		var hired_percent = randf()*(salary/group.salary_great)
-		amount *= hired_percent/quit_percent
-		amount = round(amount)
+		var quit = min(round(amount*randf()/(salary/group.salary_min)), amount)
+		var hired = round(amount*randf()*(salary/group.salary_great))
+		amount += hired-quit
+		return [quit, hired]
 
 func new_bunch(egroup, amount):
 	var bunch = Bunch.new()
@@ -50,12 +52,12 @@ func work():
 
 func turnover():
 	"""Slaves might like or might not like to be slaves"""
-	for bunch in workers:
-		bunch.turnover(worker_salary)
-	for bunch in engineers:
-		bunch.turnover(engineer_salary)
-	for bunch in scientists:
-		bunch.turnover(scientist_salary)
+	for type in ["worker", "engineer", "scientist"]:
+		for bunch in get(type+"s"):
+			var turnover = bunch.turnover(get(type+"_salary"))
+			var quit = turnover[0]
+			var hired = turnover[1]
+			write_log("%s %ss quit and %s were hired"%[quit, type, hired])
 
 func pass_time():
 	var results = work()
@@ -77,3 +79,7 @@ func get_power(employees):
 
 func get_salary():
 	return worker_amount()*worker_salary + engineer_amount()*engineer_salary + scientist_amount()*scientist_salary
+
+func write_log(msg):
+	if is_logged:
+		GlobalEventLog.write("main", "[b]%s unit: [/b]%s"%[type, msg])

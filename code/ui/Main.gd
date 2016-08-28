@@ -4,6 +4,7 @@ signal time_passed
 
 func _ready():
 	select_tab(0)
+	GlobalEventLog.write("main", "job started")
 
 func select_tab(id):
 	# meh, lets assume id == child number
@@ -19,3 +20,6 @@ func pass_time():
 	for zone in ZoneInfos.get_zones():
 		zone.pass_time()
 	emit_signal("time_passed")
+
+func show_hide_log(to_show):
+	get_node("EventLog").set_hidden(not to_show)

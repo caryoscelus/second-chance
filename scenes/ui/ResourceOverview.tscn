@@ -285,7 +285,6 @@ button/selected = 0
 
 [node name="groups" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 rect/min_size = Vector2( 400, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -336,5 +335,7 @@ align = 0
 [connection signal="pressed" from="unit_editor/back" to="." method="back_to_unit_list"]
 
 [connection signal="pressed" from="unit_editor/remove" to="." method="remove_unit"]
+
+[connection signal="button_selected" from="unit_editor/content/remove" to="." method="remove_unit_bunch"]
 
 

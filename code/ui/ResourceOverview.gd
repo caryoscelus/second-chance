@@ -75,7 +75,30 @@ func remove_unit():
 func edit_unit(unit):
 	units.set_hidden(true)
 	editing_unit = unit
+	update_unit_editor()
 	unit_editor.set_hidden(false)
+
+func update_unit_editor():
+	var bunches = unit_editor.get_node("content/bunches")
+	var remove = unit_editor.get_node("content/remove")
+	
+	bunches.clear()
+	remove.clear()
+	
+	var all_bunches = editing_unit.workers + editing_unit.engineers + editing_unit.scientists
+	
+	for bunch in all_bunches:
+		var group = EmployeeGroups.get_group(bunch.egroup)
+		bunches.add_button("%ss from %s: %s"%[group.type, bunch.amount, bunch.amount])
+		remove.add_button("X")
+
+func remove_unit_bunch(n):
+	print("remove unit bunch ", n)
+
+func add_unit_bunch(group):
+	if unit_editor.is_hidden():
+		return
+	print("add unit bunch ", group.name)
 
 func update_groups():
 	clear_children(groups)
@@ -87,6 +110,7 @@ func update_groups():
 		line.set_text(line.get_text()%[group.name, group.amount, group.type])
 		line.remove_from_group("persistent")
 		line.set_hidden(false)
+		line.connect("pressed", self, "add_unit_bunch", [group])
 		groups.add_child(line)
 
 func clear_children(node):

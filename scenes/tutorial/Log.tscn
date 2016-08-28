@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/ui/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/tutorial/log.png" type="Texture" id=2]
+
+[node name="Tutorial" instance=ExtResource( 1 )]
+
+texture = ExtResource( 2 )
+id = "log"
+next_slide = "res://scenes/tutorial/Resources.tscn"
+
+[node name="text" parent="panel"]
+
+bbcode/bbcode = "I will also provide you reports and logs about our progress.\nYou don\'t need to dig into all the details, but you might find them useful at times."
+
+

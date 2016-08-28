@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/ui/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/tutorial/units.png" type="Texture" id=2]
+
+[node name="Tutorial" instance=ExtResource( 1 )]
+
+texture = ExtResource( 2 )
+id = "units"
+next_slide = "res://scenes/tutorial/Editor.tscn"
+
+[node name="text" parent="panel"]
+
+bbcode/bbcode = "As any proper organization, we devide our workers in units.\nOn the first stage we only need excavation units, but later on we\'ll need some research ones too.\nNow might be a good time to create an excavation unit."
+
+

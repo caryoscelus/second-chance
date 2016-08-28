@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/ui/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/tutorial/map.png" type="Texture" id=2]
+
+[node name="Tutorial" instance=ExtResource( 1 )]
+
+texture = ExtResource( 2 )
+id = "map"
+next_slide = "res://scenes/tutorial/Log.tscn"
+
+[node name="text" parent="panel"]
+
+bbcode/bbcode = "As you know, our goal is to recover various ancient technologies, but since they were banned it\'s hard to find their traces.\nOperational center specialists have prepared a map with most promising research sites marked and our team is now in of them: it\'s called Europa.\nOther teams research in another regions and i will provide you information about their progress.\nBut competition is not our priority now."
+
+

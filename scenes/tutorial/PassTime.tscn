@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/ui/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/tutorial/pass_time.png" type="Texture" id=2]
+
+[node name="Tutorial" instance=ExtResource( 1 )]
+
+texture = ExtResource( 2 )
+id = "pass_time"
+
+[node name="text" parent="panel"]
+
+bbcode/bbcode = "After giving out your orders, you don\'t need to do anything and can relax while your subordinates do the job!"
+
+

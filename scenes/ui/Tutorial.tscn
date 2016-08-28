@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://code/ui/Tutorial.gd" type="Script" id=1]
+[ext_resource path="res://gfx/ui/portrait_frame.png" type="Texture" id=2]
+[ext_resource path="res://gfx/portraits/akira.png" type="Texture" id=3]
+
+[node name="Tutorial" type="TextureFrame" groups=[ "persistent" ]]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+stretch_mode = 0
+script/script = ExtResource( 1 )
+id = null
+next_slide = null
+
+[node name="panel" type="Panel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 289.0
+margin/top = 263.0
+margin/right = 1059.0
+margin/bottom = 536.0
+
+[node name="portrait" type="TextureFrame" parent="panel"]
+
+editor/display_folded = true
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 29.0
+margin/top = 54.0
+margin/right = 169.0
+margin/bottom = 194.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+__meta__ = { "_edit_group_":true }
+
+[node name="portrait" type="TextureFrame" parent="panel/portrait"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 6.0
+margin/top = 7.0
+margin/right = 134.0
+margin/bottom = 135.0
+texture = ExtResource( 3 )
+stretch_mode = 0
+
+[node name="name" type="Label" parent="panel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 46.0
+margin/top = 202.0
+margin/right = 154.0
+margin/bottom = 216.0
+text = "Akira"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="text" type="RichTextLabel" parent="panel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 196.0
+margin/top = 26.0
+margin/right = 746.0
+margin/bottom = 246.0
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+
+

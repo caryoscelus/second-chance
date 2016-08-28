@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/ui/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/tutorial/resources.png" type="Texture" id=2]
+
+[node name="Tutorial" instance=ExtResource( 1 )]
+
+texture = ExtResource( 2 )
+id = "resources"
+next_slide = "res://scenes/tutorial/Units.tscn"
+
+[node name="text" parent="panel"]
+
+bbcode/bbcode = "On first stage of our mission, our main goal is to dig out ancient technology pieces, which will later be studied.\nApart from three main technologies, we might also find otherwise valuable resources - i.e. gold - which can be used to pay salaries to our workers."
+
+

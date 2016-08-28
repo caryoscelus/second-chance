@@ -20,7 +20,22 @@ func _ready():
 		load_dialogue(intro_dialogue)
 
 func guide_tour():
-	GlobalEventLog.write("main", "Sorry, no guide for now")
+	load_tutorial("res://scenes/tutorial/Map.tscn")
+
+var tutorial
+
+func load_tutorial(path):
+	if not path:
+		return
+	tutorial = load(path).instance()
+	tutorial.connect("next_slide", self, "tutorial_next")
+	if tutorial.id == "resources":
+		select_tab(1)
+	add_child(tutorial)
+
+func tutorial_next(next_slide):
+	tutorial.queue_free()
+	load_tutorial(next_slide)
 
 func update_pc_portrait(pc):
 	pc_portrait_container.set_hidden(false)

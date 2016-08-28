@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/ui/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/tutorial/editor.png" type="Texture" id=2]
+
+[node name="Tutorial" instance=ExtResource( 1 )]
+
+texture = ExtResource( 2 )
+id = "editor"
+next_slide = "res://scenes/tutorial/PassTime.tscn"
+
+[node name="text" parent="panel"]
+
+bbcode/bbcode = "Since this is excavation unit, we only need workers and engineers in it.\nWorkers will do the main job, while engineers will guide them.\nSince engineer require more qualification for the job, they usually require higher salary.\nYou can start by paying 1000 gold to workers and 2000 to engineers and then adjust if you find that\'s not enough to keep them productive or it\'s too much for your budget.\nNote that salaries are equal for all employees of one type in unit, but different units can have different salaries.\nAt the moment our only work force comes from Metropolia, but later we may be able to hire locals."
+
+

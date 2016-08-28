@@ -58,7 +58,7 @@ func pass_time():
 	turnover()
 
 func get_amount(employees):
-	total = 0
+	var total = 0
 	for bunch in employees:
 		total += bunch.amount
 	return total

@@ -48,7 +48,6 @@ editor/display_folded = true
 
 transform/pos = Vector2( 545.116, 513.195 )
 transform/rot = 63.9106
-transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 
 [node name="player" type="AnimationPlayer" parent="WorldMap/aircraft"]

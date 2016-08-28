@@ -38,3 +38,7 @@ func _ready():
 	])
 	scene(1, "Very well, then.", luca, true)
 	get_parent().load_story(story)
+	get_parent().connect("finished_story", self, "end_of_story")
+
+func end_of_story(results):
+	Characters.set_pc(results[0])

@@ -4,20 +4,28 @@ signal time_passed
 
 export(String, FILE, "*.tscn") var intro_dialogue
 
+onready var pc_portrait_container = get_node("pc_portrait")
+onready var pc_portrait = get_node("pc_portrait/portrait")
+
 var dialogue
 
 func _ready():
+	Characters.connect("pc_changed", self, "update_pc_portrait")
 	select_tab(0)
 	GlobalEventLog.write("main", "job started")
 	if intro_dialogue:
 		load_dialogue(intro_dialogue)
 
+func update_pc_portrait(pc):
+	pc_portrait_container.set_hidden(false)
+	pc_portrait.set_texture(load(Characters.get_pc().portrait))
+
 func load_dialogue(path):
 	dialogue = load(path).instance()
 	add_child(dialogue)
-	dialogue.connect("finished_story", self, "remove_dialogue")
+	dialogue.connect("finished_story", self, "end_of_dialogue")
 
-func remove_dialogue():
+func end_of_dialogue(results):
 	remove_child(dialogue)
 	dialogue.queue_free()
 

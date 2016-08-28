@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://code/ui/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/world/WorldMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/ResourceOverview.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ui/EventLog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gfx/ui/portrait_frame.png" type="Texture" id=5]
+[ext_resource path="res://gfx/portraits/akira.png" type="Texture" id=6]
 
 [node name="Main" type="Container"]
 
@@ -87,6 +89,37 @@ enabled_focus_mode = 2
 shortcut = null
 text = "Show/hide log"
 flat = false
+
+[node name="pc_portrait" type="TextureFrame" parent="." groups=[ "persistent" ]]
+
+visibility/visible = false
+anchor/top = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 26.0
+margin/top = 166.0
+margin/right = 166.0
+margin/bottom = 26.0
+texture = ExtResource( 5 )
+stretch_mode = 0
+
+[node name="portrait" type="TextureFrame" parent="pc_portrait" groups=[ "persistent" ]]
+
+anchor/top = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 6.0
+margin/top = 134.0
+margin/right = 134.0
+margin/bottom = 6.0
+texture = ExtResource( 6 )
+stretch_mode = 0
 
 [connection signal="time_passed" from="." to="ResourceOverview" method="update_all"]
 

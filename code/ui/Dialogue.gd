@@ -40,7 +40,7 @@ func advance_story():
 		return
 	story_pos += 1
 	if story_pos >= story.size():
-		emit_signal("finished_story")
+		emit_signal("finished_story", choice_results)
 		return
 	var scene = story[story_pos]
 	if "choices" in scene:

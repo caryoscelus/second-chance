@@ -164,6 +164,8 @@ stretch_mode = 0
 
 [connection signal="time_passed" from="." to="ResourceOverview" method="update_all"]
 
+[connection signal="finished" from="WorldMap/aircraft/player" to="." method="on_aircraft_landed"]
+
 [connection signal="button_selected" from="switch" to="." method="select_tab"]
 
 [connection signal="pressed" from="pass_time" to="." method="pass_time"]

@@ -12,15 +12,22 @@ var dialogue
 var is_intro_dialogue = true
 
 func _ready():
+	Counsellor.connect("guide_tour", self, "guide_tour")
 	Characters.connect("pc_changed", self, "update_pc_portrait")
 	select_tab(0)
 	GlobalEventLog.write("main", "job started")
 	if intro_dialogue:
 		load_dialogue(intro_dialogue)
 
+func guide_tour():
+	GlobalEventLog.write("main", "Sorry, no guide for now")
+
 func update_pc_portrait(pc):
 	pc_portrait_container.set_hidden(false)
 	pc_portrait.set_texture(load(Characters.get_pc().portrait))
+
+func on_aircraft_landed():
+	load_dialogue("res://scenes/story/WelcomeCommander.tscn")
 
 func load_dialogue(path):
 	dialogue = load(path).instance()

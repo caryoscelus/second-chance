@@ -37,6 +37,7 @@ func _ready():
 		}
 	])
 	scene(1, "Very well, then.", luca, true)
+	scene(1, "The one you choose will be in charge of the whole operation and will also operate in Europa region as it is deemed to be of greate importance.")
 	get_parent().load_story(story)
 	get_parent().connect("finished_story", self, "end_of_story")
 

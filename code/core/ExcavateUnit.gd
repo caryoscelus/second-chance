@@ -34,6 +34,8 @@ func worker_power():
 	return get_power(workers)
 
 func engineer_bonus():
+	if not get_amount(workers):
+		return 1.0
 	var can_handle = get_power(engineers) * WORKERS_PER_ENGINEER
 	var handled = min(can_handle, get_amount(workers))
 	return 1.0 + ENGINEER_BONUS*(handled/get_amount(workers))

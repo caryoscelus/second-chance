@@ -9,8 +9,8 @@ const DIG_STEPS = 4
 
 # TODO: depend on area
 const DIG_GOLD = 256
-const DIG_ROCKET = 1/64
-const DIG_NUCLEAR = 1/64
+const DIG_ROCKET = 1.0/64
+const DIG_NUCLEAR = 1.0/64
 const DIG_COMPUTER = 2
 
 func _init():
@@ -22,11 +22,24 @@ func work():
 	var productivity = worker_power() * engineer_bonus()
 	var coeff = productivity / DIG_STEPS * 2 # so that mean is correct
 	
+	var digged_gold = 0
+	var digged_rocket = 0
+	var digged_nuclear = 0
+	var digged_computer = 0
 	for step in range(DIG_STEPS):
-		resources.gold += DIG_GOLD*randf()*coeff
-		resources.rocket += DIG_ROCKET*randf()*coeff
-		resources.nuclear += DIG_NUCLEAR*randf()*coeff
-		resources.computer += DIG_COMPUTER*randf()*coeff
+		digged_gold += DIG_GOLD*randf()*coeff
+		digged_rocket += DIG_ROCKET*randf()*coeff
+		digged_nuclear += DIG_NUCLEAR*randf()*coeff
+		digged_computer += DIG_COMPUTER*randf()*coeff
+	digged_gold = round(digged_gold)
+	digged_rocket = round(digged_rocket)
+	digged_nuclear = round(digged_nuclear)
+	digged_computer = round(digged_computer)
+	write_log("digged: %s gold, %s rockets, %s nuclear weapons, %s computers"%[digged_gold, digged_rocket, digged_nuclear, digged_computer])
+	resources.gold += digged_gold
+	resources.rocket += digged_rocket
+	resources.nuclear += digged_nuclear
+	resources.computer += digged_computer
 	
 	return resources
 

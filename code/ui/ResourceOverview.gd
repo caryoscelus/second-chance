@@ -1,10 +1,16 @@
 extends HBoxContainer
 
+const ExcavateUnit = preload("res://code/core/ExcavateUnit.gd")
+const ResearchUnit = preload("res://code/core/ResearchUnit.gd")
+
 onready var resources = get_node("resources")
 onready var units = get_node("units")
+onready var unit_editor = get_node("unit_editor")
 onready var groups = get_node("groups")
 
 var zone
+
+var editing_unit
 
 func _ready():
 	set_zone(ZoneInfos.pc_zone)
@@ -43,13 +49,27 @@ func update_units():
 			unit.scientist_amount(),
 		])
 		line.connect("pressed", self, "edit_unit", [unit])
+		line.set_hidden(false)
 		units.add_child(line)
 
-func new_unit_popup():
-	print("create new unit")
+func create_new_unit(type):
+	var unit
+	if type == "excavate":
+		unit = ExcavateUnit.new()
+	elif type == "research":
+		unit = ResearchUnit.new()
+	zone.units.append(unit)
+	edit_unit(unit)
+
+func back_to_unit_list():
+	unit_editor.set_hidden(true)
+	units.set_hidden(false)
+	update_units()
 
 func edit_unit(unit):
-	print("edit unit")
+	units.set_hidden(true)
+	editing_unit = unit
+	unit_editor.set_hidden(false)
 
 func update_groups():
 	clear_children(groups)

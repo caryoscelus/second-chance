@@ -19,6 +19,7 @@ script/script = ExtResource( 1 )
 
 [node name="resources" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 rect/min_size = Vector2( 400, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -64,6 +65,7 @@ align = 0
 
 [node name="units" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 rect/min_size = Vector2( 400, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -90,7 +92,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="add" type="Button" parent="units" groups=[ "persistent" ]]
+[node name="add" type="HBoxContainer" parent="units" groups=[ "persistent" ]]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -100,10 +102,38 @@ margin/left = 0.0
 margin/top = 18.0
 margin/right = 400.0
 margin/bottom = 38.0
+alignment = 1
+
+[node name="excavate" type="Button" parent="units/add"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 90.0
+margin/top = 0.0
+margin/right = 196.0
+margin/bottom = 20.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "New Unit"
+text = "+Excavate Unit"
+flat = false
+
+[node name="research" type="Button" parent="units/add"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 200.0
+margin/top = 0.0
+margin/right = 309.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "+Research Unit"
 flat = false
 
 [node name="template" type="Button" parent="units" groups=[ "persistent" ]]
@@ -123,8 +153,139 @@ text = "%s - w %s e %s s %s"
 flat = false
 align = 0
 
+[node name="unit_editor" type="VBoxContainer" parent="."]
+
+visibility/visible = false
+rect/min_size = Vector2( 400, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 404.0
+margin/top = 0.0
+margin/right = 804.0
+margin/bottom = 720.0
+alignment = 0
+
+[node name="label" type="Label" parent="unit_editor"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 400.0
+margin/bottom = 14.0
+text = "Edit unit"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="back" type="Button" parent="unit_editor"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 400.0
+margin/bottom = 38.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back to list"
+flat = false
+
+[node name="remove" type="Button" parent="unit_editor"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 42.0
+margin/right = 400.0
+margin/bottom = 62.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Remove unit"
+flat = false
+
+[node name="type" type="Label" parent="unit_editor"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 66.0
+margin/right = 400.0
+margin/bottom = 80.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="content" type="HBoxContainer" parent="unit_editor"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 84.0
+margin/right = 400.0
+margin/bottom = 166.0
+alignment = 1
+
+[node name="bunches" type="VButtonArray" parent="unit_editor/content"]
+
+rect/min_size = Vector2( 320, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 27.0
+margin/top = 0.0
+margin/right = 347.0
+margin/bottom = 82.0
+button/count = 3
+button/min_button_size = 0.0
+button/align = 0
+button/0/text = ""
+button/0/icon = null
+button/1/text = ""
+button/1/icon = null
+button/2/text = ""
+button/2/icon = null
+button/selected = 0
+
+[node name="remove" type="VButtonArray" parent="unit_editor/content"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 351.0
+margin/top = 0.0
+margin/right = 373.0
+margin/bottom = 82.0
+button/count = 3
+button/min_button_size = -1.0
+button/align = 0
+button/0/text = ""
+button/0/icon = null
+button/1/text = ""
+button/1/icon = null
+button/2/text = ""
+button/2/icon = null
+button/selected = 0
+
 [node name="groups" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 rect/min_size = Vector2( 400, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -168,6 +329,10 @@ text = "%s: %s of %ss"
 flat = false
 align = 0
 
-[connection signal="pressed" from="units/add" to="." method="new_unit_popup"]
+[connection signal="pressed" from="units/add/excavate" to="." method="create_new_unit" binds= [ "excavate" ]]
+
+[connection signal="pressed" from="units/add/research" to="." method="create_new_unit" binds= [ "research" ]]
+
+[connection signal="pressed" from="unit_editor/back" to="." method="back_to_unit_list"]
 
 

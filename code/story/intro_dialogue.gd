@@ -16,14 +16,15 @@ func _ready():
 	scene(1, "Even if we would use analogue signal coding, we still won't be able to control missiles without computers.", luca, true)
 	scene(0, "Well..")
 	scene(0, "We all may regret it later, but i'm gonna trust you on this.")
-	scene(0, "Should i put you in charge of this operation?")
-	scene(1, "I would humbly ask you to not do so, Leader.", luca, true)
+	scene(0, "We'll try to use these evil ancient technologies to save humanity.")
+	scene(0, "Should i put you in charge of this operation?", leader, true)
+	scene(1, "I would humbly ask you to not do so, Leader.")
 	scene(1, "I'm not skilled at managing people.")
 	scene(0, "Very well. I understand that.")
-	scene(0, "But it should be someone who understands the problem, someone from Science Commitee.")
-	scene(0, "Who would you recommend?", leader, true)
+	scene(0, "But it should be someone who understands the problem, someone from Science Commitee.", leader, true)
+	scene(0, "Who would you recommend?")
 	scene(1, "I've prepared two candidates. Both of them are skilled in science and proved to be good managers.")
-	scene(1, "Even if on a much smaller scale.")
+	scene(1, "Even if on a much smaller scale.", luca, true)
 	choice("Who will lead this project?", [
 		{
 			text = "Aalto",

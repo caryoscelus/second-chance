@@ -13,11 +13,13 @@ pc_zone = "europa"
 script/script = ExtResource( 2 )
 id = "gov"
 name = "Gov"
+is_logged = false
 
 [node name="europa" type="Node" parent="."]
 
 script/script = ExtResource( 2 )
 id = "europa"
 name = "Europa"
+is_logged = true
 
 

@@ -335,4 +335,6 @@ align = 0
 
 [connection signal="pressed" from="unit_editor/back" to="." method="back_to_unit_list"]
 
+[connection signal="pressed" from="unit_editor/remove" to="." method="remove_unit"]
+
 

@@ -68,6 +68,10 @@ func back_to_unit_list():
 	units.set_hidden(false)
 	update_units()
 
+func remove_unit():
+	zone.units.erase(editing_unit)
+	back_to_unit_list()
+
 func edit_unit(unit):
 	units.set_hidden(true)
 	editing_unit = unit

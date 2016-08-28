@@ -155,6 +155,7 @@ align = 0
 
 [node name="unit_editor" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 rect/min_size = Vector2( 400, 0 )
 focus/ignore_mouse = false

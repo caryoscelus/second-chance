@@ -5,6 +5,7 @@
 # - expected salary range
 extends Node
 
+onready var id = get_index()
 export(String) var name
 export(String, "worker", "engineer", "scientist") var type
 export(int) var amount

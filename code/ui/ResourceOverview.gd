@@ -1,5 +1,6 @@
 extends HBoxContainer
 
+const Unit = preload("res://code/core/Unit.gd")
 const ExcavateUnit = preload("res://code/core/ExcavateUnit.gd")
 const ResearchUnit = preload("res://code/core/ResearchUnit.gd")
 
@@ -90,19 +91,29 @@ func update_unit_editor():
 	
 	for bunch in all_bunches:
 		var group = EmployeeGroups.get_group(bunch.egroup)
-		bunches.add_button("%ss from %s: %s"%[group.type, bunch.amount, bunch.amount])
+		bunches.add_button("%ss from %s: %s"%[group.type, group.name, bunch.amount])
 		remove.add_button("X")
 	
 	for type in ["worker", "engineer", "scientist"]:
 		salary.get_node(type+"s").set_text(str(editing_unit[type+"_salary"]))
 
 func remove_unit_bunch(n):
-	print("remove unit bunch ", n)
+	# meh
+	for type in ["worker", "engineer", "scientist"]:
+		var bunches = editing_unit[type+"s"]
+		if n >= bunches.size():
+			n -= bunches.size()
+		else:
+			bunches.remove(n)
+			break
+	update_unit_editor()
 
 func add_unit_bunch(group):
 	if unit_editor.is_hidden():
 		return
-	print("add unit bunch ", group.name)
+	var bunch = Unit.new_bunch(group.id, 10)
+	editing_unit[group.type+"s"].append(bunch)
+	update_unit_editor()
 
 func change_salary(text, who):
 	var salary = text.to_int()

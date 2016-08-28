@@ -14,7 +14,11 @@ class Bunch:
 	var amount
 	
 	func turnover(salary):
-		pass
+		var group = EmployeeGroups.get_group(egroup)
+		var quit_percent = randf()/(salary/group.salary_min)
+		var hired_percent = randf()*(salary/group.salary_great)
+		amount *= hired_percent/quit_percent
+		amount = round(amount)
 
 func new_bunch(egroup, amount):
 	var bunch = Bunch.new()

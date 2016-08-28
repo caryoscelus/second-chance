@@ -77,9 +77,9 @@ func say(lr, text):
 		name = speaker.name
 	var bb
 	if lr == 0:
-		bb = name+"\n[b]"+text+"[/b]\n"
+		bb = name+"\n[b]"+text+"[/b]\n\n"
 	elif lr == 1:
-		bb = "[right]"+name+"\n[b]"+text+"[/b][/right]\n"
+		bb = "[right]"+name+"\n[b]"+text+"[/b][/right]\n\n"
 	all_text += bb
 	textbox.parse_bbcode(all_text)
 
@@ -109,6 +109,7 @@ func made_choice(i):
 	popup_finished = true
 	choice_results.append(choice_options[i])
 	choice_popup.set_hidden(true)
+	advance_story()
 
 func _on_choice_popup_hidden():
 	if not popup_finished:

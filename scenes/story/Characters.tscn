@@ -13,4 +13,34 @@ script/script = ExtResource( 2 )
 name = "The Great Leader"
 portrait = "res://gfx/portraits/leader.png"
 
+[node name="luca" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+name = "Luca"
+portrait = "res://gfx/portraits/luca.png"
+
+[node name="sasha" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+name = "Sasha"
+portrait = "res://gfx/portraits/sasha.png"
+
+[node name="aalto" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+name = "Aalto"
+portrait = "res://gfx/portraits/aalto.png"
+
+[node name="akira" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+name = "Akira"
+portrait = "res://gfx/portraits/akira.png"
+
+[node name="marguerite" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+name = "Marguerite"
+portrait = "res://gfx/portraits/marguerite.png"
+
 

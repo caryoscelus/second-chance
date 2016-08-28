@@ -17,8 +17,12 @@ class Bunch:
 	
 	func turnover(salary):
 		var group = EmployeeGroups.get_group(egroup)
-		var quit = min(round(amount*randf()/(salary/group.salary_min)), amount)
-		var hired = round(amount*randf()*(salary/group.salary_great))
+		var quit = 0
+		var hired = 0
+		quit += max(0, (randf()+randf())*(group.salary_min/salary-0.8)*amount/2)
+		hired += max(0, (randf()+randf())*(salary/group.salary_great-0.8)*amount/2)
+		quit = round(quit)
+		hired = round(hired)
 		amount += hired-quit
 		return [quit, hired]
 

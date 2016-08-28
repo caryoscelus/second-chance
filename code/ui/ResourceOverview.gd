@@ -31,6 +31,7 @@ func update_resources():
 	for resource in ["gold", "rocket"]:
 		var line = template.duplicate()
 		line.set_text(line.get_text()%[resource, zone.resources[resource]])
+		line.remove_from_group("persistent")
 		line.set_hidden(false)
 		resources.add_child(line)
 
@@ -48,6 +49,7 @@ func update_units():
 			unit.engineer_amount(),
 			unit.scientist_amount(),
 		])
+		line.remove_from_group("persistent")
 		line.connect("pressed", self, "edit_unit", [unit])
 		line.set_hidden(false)
 		units.add_child(line)
@@ -79,6 +81,7 @@ func update_groups():
 	for group in EmployeeGroups.get_groups():
 		var line = template.duplicate()
 		line.set_text(line.get_text()%[group.name, group.amount, group.type])
+		line.remove_from_group("persistent")
 		line.set_hidden(false)
 		groups.add_child(line)
 

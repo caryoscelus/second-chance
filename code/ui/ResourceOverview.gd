@@ -65,12 +65,12 @@ func create_new_unit(type):
 		unit = ExcavateUnit.new()
 	elif type == "research":
 		unit = ResearchUnit.new()
-	zone.units.append(unit)
+	zone.add_unit(unit)
 	update_units()
 	edit_unit(unit)
 
 func remove_unit():
-	zone.units.erase(editing_unit)
+	zone.remove_unit(editing_unit)
 	editing_unit = null
 	update_units()
 	update_unit_editor()

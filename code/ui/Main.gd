@@ -19,6 +19,7 @@ func hide_all():
 func pass_time():
 	for zone in ZoneInfos.get_zones():
 		zone.pass_time()
+	GlobalEventLog.write("main", "month passed")
 	emit_signal("time_passed")
 
 func show_hide_log(to_show):

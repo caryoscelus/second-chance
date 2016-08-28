@@ -31,17 +31,25 @@ func pass_time():
 		add_resources(unit.pass_time())
 	check_budget()
 
+func add_unit(unit):
+	units.append(unit)
+	write_log("[b]zone %s[/b]: added %s unit"%[name, unit.type])
+
+func remove_unit(unit):
+	units.erase(unit)
+	write_log("[b]zone %s[/b]: removed %s unit"%[name, unit.type])
+
 func add_resources(res):
 	for r in ["gold", "rocket"]:
 		resources[r] += res[r]
 
 func spend_money(amount, reason="spent"):
 	resources.gold -= amount
-	write_log("[b]%s[/b]: %s gold"%[reason, amount])
+	write_log("[b]zone %s[/b] %s: %s gold"%[name, reason, amount])
 
 func check_budget():
 	if resources.gold < -max_credit:
-		write_log("GAME OVER - spent all money")
+		write_log("[b]zone %s[/b] is bankrupt"%name)
 
 func write_log(msg):
 	if is_logged:

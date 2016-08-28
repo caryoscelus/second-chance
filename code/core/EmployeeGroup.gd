@@ -12,3 +12,4 @@ export(int) var amount
 export(float) var skill
 export(float) var salary_min
 export(float) var salary_great
+export(bool) var active

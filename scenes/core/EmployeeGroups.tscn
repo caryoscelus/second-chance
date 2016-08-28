@@ -16,6 +16,7 @@ amount = 8192
 skill = 1.0
 salary_min = 700.0
 salary_great = 2000.0
+active = true
 
 [node name="metropolitan_engineers" type="Node" parent="."]
 
@@ -26,6 +27,7 @@ amount = 256
 skill = 1.0
 salary_min = 1600.0
 salary_great = 3200.0
+active = true
 
 [node name="local_workers" type="Node" parent="."]
 
@@ -36,6 +38,7 @@ amount = 1024
 skill = 0.6
 salary_min = 300.0
 salary_great = 1200.0
+active = null
 
 [node name="Node2" type="Node" parent="."]
 
@@ -46,6 +49,7 @@ amount = null
 skill = null
 salary_min = null
 salary_great = null
+active = null
 
 [node name="Node3" type="Node" parent="."]
 
@@ -56,5 +60,6 @@ amount = null
 skill = null
 salary_min = null
 salary_great = null
+active = null
 
 

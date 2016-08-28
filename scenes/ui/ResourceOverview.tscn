@@ -368,6 +368,51 @@ button/2/text = ""
 button/2/icon = null
 button/selected = 0
 
+[node name="employee_amount" type="WindowDialog" parent="unit_editor"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 192.0
+margin/right = 150.0
+margin/bottom = 290.0
+popup/exclusive = false
+window/title = "Employee amount"
+
+[node name="amount" type="LineEdit" parent="unit_editor/employee_amount"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 5.0
+margin/right = 136.0
+margin/bottom = 37.0
+placeholder/text = "Employee amount"
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="ok" type="Button" parent="unit_editor/employee_amount"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 34.0
+margin/top = 47.0
+margin/right = 102.0
+margin/bottom = 67.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "OK"
+flat = false
+
 [node name="editor_separator" type="VSeparator" parent="."]
 
 rect/min_size = Vector2( 20, 0 )
@@ -438,5 +483,9 @@ align = 0
 [connection signal="text_entered" from="unit_editor/salary/scientists" to="." method="change_salary" binds= [ "scientist" ]]
 
 [connection signal="button_selected" from="unit_editor/content/remove" to="." method="remove_unit_bunch"]
+
+[connection signal="text_changed" from="unit_editor/employee_amount/amount" to="." method="set_unit_bunch_amount"]
+
+[connection signal="pressed" from="unit_editor/employee_amount/ok" to="unit_editor/employee_amount" method="set_hidden" binds= [ true ]]
 
 

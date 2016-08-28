@@ -109,8 +109,6 @@ flat = false
 
 [node name="EventLog" parent="." groups=[ "persistent" ] instance=ExtResource( 5 )]
 
-visibility/visible = false
-
 [node name="show_log" type="Button" parent="." groups=[ "persistent" ]]
 
 anchor/right = 1

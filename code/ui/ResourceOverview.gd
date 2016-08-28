@@ -114,10 +114,21 @@ func remove_unit_bunch(n):
 			break
 	update_unit_editor()
 
+var add_unit_bunch_amount = 10
+
 func add_unit_bunch(group):
 	if not editing_unit:
 		return
-	var bunch = Unit.new_bunch(group.id, 10)
+	var popup = get_node("unit_editor/employee_amount")
+	popup.get_node("amount").set_text(str(add_unit_bunch_amount))
+	popup.connect("popup_hide", self, "do_add_unit_bunch", [group])
+	popup.popup_centered()
+
+func set_unit_bunch_amount(s):
+	add_unit_bunch_amount = s.to_int()
+
+func do_add_unit_bunch(group):
+	var bunch = Unit.new_bunch(group.id, add_unit_bunch_amount)
 	editing_unit[group.type+"s"].append(bunch)
 	update_units()
 	update_unit_editor()

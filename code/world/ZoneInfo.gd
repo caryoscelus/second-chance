@@ -1,12 +1,9 @@
 extends Node
 
-var id = "" setget set_id
-var name = ""
+const Resources = preload("../core/Resources.gd")
 
-func set_id(new_id):
-	id = new_id
-	if not name:
-		name = id
+export(String) var id
+export(String) var name
 
 var allies = []
 
@@ -16,21 +13,10 @@ var reputation = {
 	locals = 0,
 }
 
-var employees = {
-	workers = 0,
-	engineers = 0,
-	scientists = 0,
-}
+var workers = 0
+var engineers = 0
+var scientists = 0
 
-var tech = {
-	rocket = 0.0,
-	nuclear = 0.0,
-	computer = 0.0,
-	excavate = 0.0,
-}
+var resources = Resources.new()
 
-var resources = {
-	money = 0,
-	weapons = 0,
-	excavators = 0,
-}
+var units = []

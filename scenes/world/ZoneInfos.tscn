@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://code/world/ZoneInfos.gd" type="Script" id=1]
+[ext_resource path="res://code/world/ZoneInfo.gd" type="Script" id=2]
+
+[node name="ZoneInfos" type="Node"]
+
+script/script = ExtResource( 1 )
+pc_zone = "europa"
+
+[node name="gov" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+id = "gov"
+name = "Gov"
+
+[node name="europa" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+id = "europa"
+name = "Europa"
+
+

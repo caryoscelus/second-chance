@@ -14,8 +14,8 @@ func select_tab(tab):
 	var header = headers.get_node(res_name).duplicate()
 	header.set_hidden(false)
 	container.add_child(header)
-	for name in ZoneInfos.zones:
-		var zone = ZoneInfos.zones[name]
+	for zone in ZoneInfos.get_zones():
+		var name = zone.name
 		var line = header.duplicate()
 		var skip = true # meh
 		for cell in line.get_children():
@@ -23,5 +23,5 @@ func select_tab(tab):
 				cell.set_text(name)
 				skip = false
 				continue
-			cell.set_text(str(zone[res_name][cell.get_name()]))
+			#cell.set_text(str(zone[res_name][cell.get_name()]))
 		container.add_child(line)

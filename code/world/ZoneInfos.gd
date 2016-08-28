@@ -1,14 +1,9 @@
 extends Node
 
-var zones = {}
+export(String) var pc_zone
 
-const ZoneInfo = preload("ZoneInfo.gd")
+func get_zone(zone):
+	return get_node(zone)
 
-func _ready():
-	new_zone("gov")
-	new_zone("europe")
-
-func new_zone(id):
-	var zone = ZoneInfo.new()
-	zone.id = id
-	zones[id] = zone
+func get_zones():
+	return get_children()

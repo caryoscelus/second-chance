@@ -2,9 +2,24 @@ extends Container
 
 signal time_passed
 
+export(String, FILE, "*.tscn") var intro_dialogue
+
+var dialogue
+
 func _ready():
 	select_tab(0)
 	GlobalEventLog.write("main", "job started")
+	if intro_dialogue:
+		load_dialogue(intro_dialogue)
+
+func load_dialogue(path):
+	dialogue = load(path).instance()
+	add_child(dialogue)
+	dialogue.connect("finished_story", self, "remove_dialogue")
+
+func remove_dialogue():
+	remove_child(dialogue)
+	dialogue.queue_free()
 
 func select_tab(id):
 	# meh, lets assume id == child number

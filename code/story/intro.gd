@@ -37,6 +37,10 @@ func _ready():
 	YOU'VE BEEN WARNED>>""")
 	
 	get_parent().load_story(story)
+	get_parent().connect("finished_story", self, "load_game")
+
+func load_game():
+	get_tree().change_scene("res://scenes/Main.tscn")
 
 func scene(text, picture=null, bg_color=null):
 	var new_scene = {text=text}

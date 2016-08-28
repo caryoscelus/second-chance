@@ -1,7 +1,5 @@
 extends Node
 
-const Resources = preload("../core/Resources.gd")
-
 # TODO: depend on reputation
 var max_credit = 10000
 
@@ -21,7 +19,7 @@ var workers = 0
 var engineers = 0
 var scientists = 0
 
-var resources = Resources.new()
+var resources = Resources.get_empty()
 
 var units = []
 

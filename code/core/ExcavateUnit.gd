@@ -1,7 +1,5 @@
 extends "Unit.gd"
 
-const Resources = preload("Resources.gd")
-
 const WORKERS_PER_ENGINEER = 16
 const ENGINEER_BONUS = 1.0
 
@@ -17,7 +15,7 @@ func _init():
 	type = "excavate"
 
 func work():
-	var resources = Resources.new()
+	var resources = Resources.get_empty()
 	
 	var productivity = worker_power() * engineer_bonus()
 	var coeff = productivity / DIG_STEPS * 2 # so that mean is correct

@@ -1,9 +1,14 @@
-extends Object
+extends Node
 
-var gold = 0
-var rocket = 0
-var nuclear = 0
-var computer = 0
-var rocket_tech = 0
-var nuclear_tech = 0
-var computer_tech = 0
+const RESOURCE_LIST = [
+	"gold",
+	"rocket",
+	"nuclear",
+	"computer",
+]
+
+func get_empty():
+	var e = {}
+	for res in RESOURCE_LIST:
+		e[res] = 0
+	return e

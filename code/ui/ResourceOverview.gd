@@ -32,8 +32,7 @@ func update_resources():
 	var template = resources.get_node("template")
 	template.set_hidden(true)
 	
-	# TODO
-	for resource in ["gold", "rocket"]:
+	for resource in Resources.RESOURCE_LIST:
 		var line = template.duplicate()
 		line.set_text(line.get_text()%[resource, zone.resources[resource]])
 		line.remove_from_group("persistent")

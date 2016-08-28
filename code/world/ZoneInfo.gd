@@ -39,7 +39,7 @@ func remove_unit(unit):
 	write_log("[b]zone %s[/b]: removed %s unit"%[name, unit.type])
 
 func add_resources(res):
-	for r in ["gold", "rocket"]:
+	for r in Resources.RESOURCE_LIST:
 		resources[r] += res[r]
 
 func spend_money(amount, reason="spent"):

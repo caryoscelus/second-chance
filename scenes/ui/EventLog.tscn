@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://code/ui/EventLog.gd" type="Script" id=1]
+[ext_resource path="res://fonts/averia/Averia-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/averia/Averia-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 3 )
+
+[node name="EventLog" type="PanelContainer"]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 320.0
+margin/top = 320.0
+margin/right = 320.0
+margin/bottom = 20.0
+script/script = ExtResource( 1 )
+
+[node name="log_text" type="RichTextLabel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 633.0
+margin/bottom = 293.0
+custom_fonts/bold_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode/enabled = true
+bbcode/bbcode = "[b]Hello, this is log[/b]\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\nbla-bla-bla\n"
+visible_characters = 3000
+
+

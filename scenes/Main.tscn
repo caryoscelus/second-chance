@@ -42,6 +42,8 @@ intro_dialogue = "res://scenes/story/IntroDialogue.tscn"
 
 [node name="WorldMap" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
+
 [node name="aircraft" type="Sprite" parent="WorldMap"]
 
 transform/pos = Vector2( 545.116, 513.195 )

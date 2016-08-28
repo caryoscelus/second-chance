@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://gfx/world/map.png" type="Texture" id=1]
 [ext_resource path="res://code/world/WorldMap.gd" type="Script" id=2]
 [ext_resource path="res://code/world/zones.gd" type="Script" id=3]
 [ext_resource path="res://scenes/world/Zone.tscn" type="PackedScene" id=4]
-[ext_resource path="res://gfx/world/zone-00.png" type="Texture" id=5]
-[ext_resource path="res://gfx/world/zone-00.pbm" type="BitMap" id=6]
-[ext_resource path="res://gfx/world/zone-01.png" type="Texture" id=7]
-[ext_resource path="res://gfx/world/zone-01.pbm" type="BitMap" id=8]
-[ext_resource path="res://scenes/ui/ShowZoneInfo.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gfx/world/zone-gov.png" type="Texture" id=5]
+[ext_resource path="res://gfx/world/zone-gov.pbm" type="BitMap" id=6]
+[ext_resource path="res://gfx/world/zone-europa.png" type="Texture" id=7]
+[ext_resource path="res://gfx/world/zone-europa.pbm" type="BitMap" id=8]
+[ext_resource path="res://gfx/world/zone-africa.png" type="Texture" id=9]
+[ext_resource path="res://gfx/world/zone-africa.pbm" type="BitMap" id=10]
+[ext_resource path="res://scenes/ui/ShowZoneInfo.tscn" type="PackedScene" id=11]
 
 [node name="WorldMap" type="TextureFrame"]
 
@@ -50,23 +52,39 @@ id = "gov"
 
 margin/left = 550.0
 margin/top = 510.0
-margin/right = 590.0
+margin/right = 575.0
 margin/bottom = 524.0
-text = "gov"
+text = "IPF"
 
-[node name="europe" parent="zones" instance=ExtResource( 4 )]
+[node name="europa" parent="zones" instance=ExtResource( 4 )]
 
 textures/hover = ExtResource( 7 )
 textures/click_mask = ExtResource( 8 )
-id = "europe"
+id = "europa"
 
-[node name="name" parent="zones/europe"]
+[node name="name" parent="zones/europa"]
 
 margin/left = 152.0
 margin/top = 268.0
 margin/right = 197.0
 margin/bottom = 282.0
-text = "europe"
+text = "Europa"
+
+[node name="africa" parent="zones" instance=ExtResource( 4 )]
+
+margin/right = -1280.0
+margin/bottom = -720.0
+textures/hover = ExtResource( 9 )
+textures/click_mask = ExtResource( 10 )
+id = "africa"
+
+[node name="name" parent="zones/africa"]
+
+margin/left = 160.0
+margin/top = 380.0
+margin/right = 200.0
+margin/bottom = 394.0
+text = "Africa"
 
 [node name="show_stats_button" type="Button" parent="."]
 
@@ -104,7 +122,7 @@ popup/exclusive = false
 window/title = "stats"
 __meta__ = { "_edit_group_":true }
 
-[node name="ShowZoneInfo" parent="stats" instance=ExtResource( 9 )]
+[node name="ShowZoneInfo" parent="stats" instance=ExtResource( 11 )]
 
 [connection signal="zone_clicked" from="zones" to="zones" method="_on_zone_clicked"]
 
@@ -112,4 +130,5 @@ __meta__ = { "_edit_group_":true }
 
 
 [editable path="zones/gov"]
-[editable path="zones/europe"]
+[editable path="zones/europa"]
+[editable path="zones/africa"]

@@ -19,7 +19,7 @@ func _ready():
 	scene("C.E. 1944, June\n    human-built object crosses boundary of space: V-2 missile", "missile")
 	scene("C.E. 1945, July\n    successful nuclear weapon test: Trinity", "trinity")
 	scene("C.E. 1957, October\n    artificial Earth satellite: Sputnik", "sputnik")
-	scene("C.E. 1977, August\n    \"Wow! signal\" recieved by Big Ear", "signal")
+	#scene("C.E. 1977, August\n    \"Wow! signal\" recieved by Big Ear", "signal")
 	scene("C.E. 2012, August\n    Voyager 1 left Solar System", "voyager")
 	set_timer(10)
 	scene("???? - END OF COMMON ERA\n    nuclear World War III begins", "nuclear")

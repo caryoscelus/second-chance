@@ -1,0 +1,26 @@
+extends "../gut/gut.gd".Test
+
+const DataContainer = preload("res://code/core/DataContainer.gd")
+
+func test_container():
+	var container = DataContainer.new()
+	assert_eq(container.size(), 0)
+	var node = Node.new()
+	node.set_name("a")
+	container.append(node)
+	assert_eq(container.size(), 1)
+	#assert_eq(container[0], node)
+	assert_eq(container.get(0), node)
+	assert_eq(container.a, node)
+	container.remove(node)
+	assert_eq(container.size(), 0)
+	assert_eq(container.a, null)
+
+func test_predefined():
+	var container = load("res://test/unit/container.tscn").instance()
+	assert_eq(container.size(), 3)
+	assert_eq(typeof(container.a), TYPE_OBJECT)
+	assert_true(container.a extends Node)
+	container.remove(container.b)
+	assert_eq(container.size(), 2)
+	assert_eq(container.get(1), container.c)

@@ -19,6 +19,9 @@
 ##
 
 ## DataContainer: Node that lets you access its children like properties
+## TODO:
+## - split into DataContainer & DataArray inherited from it
+## - type checking
 
 extends Node
 

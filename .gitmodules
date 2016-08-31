@@ -1,0 +1,3 @@
+[submodule "external/logger"]
+	path = external/logger
+	url = https://github.com/KOBUGE-Games/godot-logger.git

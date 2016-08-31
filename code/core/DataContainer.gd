@@ -34,6 +34,18 @@ func _get(name):
 func get(index):
 	return get_child(index)
 
+func _set(name, value):
+	print("_set ", name)
+	if typeof(value) == TYPE_OBJECT:
+		print("it's object")
+		value.set_name(name)
+		add_child(value)
+		print(_get(name) == value)
+	else:
+		print("it's not!")
+		Node._set(self, name, value)
+	print("_set end")
+
 func _get_property_list():
 	var props = []
 	for element in get_all():

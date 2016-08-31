@@ -16,6 +16,15 @@ func test_container():
 	assert_eq(container.size(), 0)
 	assert_eq(container.a, null)
 
+func test_set():
+	var container = DataContainer.new()
+	var node = Node.new()
+	#container["abc"] = node
+	#container.abc = node
+	container._set("abc", node)
+	assert_eq(container.abc, node)
+	assert_eq(node.get_name(), "abc")
+
 func test_predefined():
 	var container = load("res://test/unit/container.tscn").instance()
 	assert_eq(container.size(), 3)

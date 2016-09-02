@@ -1,20 +1,23 @@
 extends "../gut/gut.gd".Test
 
 const DataContainer = preload("res://code/core/DataContainer.gd")
+const DataArray = preload("res://code/core/DataArray.gd")
 
-func test_container():
-	var container = DataContainer.new()
+func test_array():
+	var container = DataArray.new()
 	assert_eq(container.size(), 0)
 	var node = Node.new()
 	node.set_name("a")
 	container.append(node)
 	assert_eq(container.size(), 1)
 	#assert_eq(container[0], node)
-	assert_eq(container.get(0), node)
+	#assert_eq(container.get(0), node)
+	assert_true("a" in container)
 	assert_eq(container.a, node)
 	container.remove(node)
 	assert_eq(container.size(), 0)
-	assert_eq(container.a, null)
+	#assert_false("a" in container)
+	#assert_eq(container.a, null)
 
 func test_set():
 	var container = DataContainer.new()
@@ -32,4 +35,4 @@ func test_predefined():
 	assert_true(container.a extends Node)
 	container.remove(container.b)
 	assert_eq(container.size(), 2)
-	assert_eq(container.get(1), container.c)
+	#assert_eq(container.get(1), container.c)

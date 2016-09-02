@@ -18,29 +18,29 @@
 ##  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-## DataContainer: Node that lets you access its children like properties
-## TODO:
-## - type checking
+## DataArray: use node as array of its children
 
-extends Node
+extends "DataContainer.gd"
 
-func _get(name):
-	if typeof(name) == TYPE_STRING:
-		return get_node(name)
-	return null
+func _get(name_or_idx):
+	var r = ._get(name_or_idx)
+	if r == null and typeof(name_or_idx) == TYPE_INT:
+		return get_child(name_or_idx)
+	return r
 
-func _set(name, value):
-	if typeof(value) == TYPE_OBJECT:
-		value.set_name(name)
-		add_child(value)
-	else:
-		._set(self, name, value)
+func append(element):
+	add_child(element)
 
-func _get_property_list():
-	var props = []
-	for element in get_all():
-		props.append({
-			name=element.get_name(),
-			type=TYPE_OBJECT,
-		})
-	return props
+func remove(element):
+	remove_child(element)
+
+func get_all():
+	return get_children()
+
+func clear():
+	var all = get_all()
+	for element in all:
+		remove(element)
+
+func size():
+	return get_child_count()

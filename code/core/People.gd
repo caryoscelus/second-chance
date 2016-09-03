@@ -18,10 +18,17 @@
 ##  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-## Unit: a working unit of people who do their jobs
+## People: tribe/nation/whatever else group of people with similar
+## characterestics
 
 extends Node
 
-var population = {}
-var salary = {}
-var task = "excavate"
+export(String) var profession
+export(String) var nation
+export(float, 1.0/16, 16.0) var skill = 1.0
+export(int, 0, 65536) var amount
+export(float, 0, 65536.0) var budget_food
+export(float, 0, 65536.0) var budget_good
+export(float, 1.0/16, 16.0) var money_to_gold
+
+# TODO: more character!

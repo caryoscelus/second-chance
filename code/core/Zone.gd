@@ -23,6 +23,9 @@
 extends "DataContainer.gd"
 
 const DataArray = preload("DataArray.gd")
+const People = preload("People.gd")
+
+var population = {}
 
 func _init():
 	set("units", DataArray.new())

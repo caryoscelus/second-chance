@@ -23,7 +23,9 @@
 extends "DataContainer.gd"
 
 const DataArray = preload("DataArray.gd")
+const Distribution = preload("Distribution.gd")
 
 func _init():
 	set("zones", DataArray.new())
 	set("people", DataArray.new())
+	set("distribution", Distribution.new())

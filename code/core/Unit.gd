@@ -24,4 +24,20 @@ extends Node
 
 var population = {}
 var salary = {}
-var task = "excavate"
+var task
+
+func get_amount(profession):
+	var total = 0
+	for people_kind in population:
+		var people = SCWorld.people[people_kind]
+		if people.profession == profession:
+			return population[people_kind]
+	return total
+
+func get_power(profession):
+	var total = 0.0
+	for people_kind in population:
+		var people = SCWorld.people[people_kind]
+		if people.profession == profession:
+			return population[people_kind] * people.skill
+	return total

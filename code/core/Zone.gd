@@ -28,5 +28,7 @@ const People = preload("People.gd")
 var population = {}
 
 func _init():
-	set("units", DataArray.new())
-	set("sites", DataArray.new())
+	if not has_node("units"):
+		set("units", DataArray.new())
+	if not has_node("sites"):
+		set("sites", DataArray.new())

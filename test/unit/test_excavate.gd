@@ -6,21 +6,23 @@ const ExcavateUnit = preload("res://code/core/ExcavateUnit.gd")
 const People = preload("res://code/core/People.gd")
 const Site = preload("res://code/core/Site.gd")
 
-var site
-
-func setup():
+func test_dig_gold():
 	var workers_1 = People.new()
 	workers_1.profession = "worker"
 	workers_1.skill = 1.0
 	SCWorld.people.set("workers_1", workers_1)
-	site = Site.new()
+	var site = Site.new()
 	site.amount = {gold=1024}
 	site.density = {gold=0.5}
+	
+	digged_gold = false
+	digged_gold_amount = 0.0
+	do_test_dig_gold(site)
 
 var digged_gold = false
-var digged_gold_amount
+var digged_gold_amount = 0.0
 
-func test_dig_gold():
+func do_test_dig_gold(site):
 	var unit = ExcavateUnit.new()
 	unit.population = {
 		"workers_1" : 16
@@ -34,6 +36,13 @@ func test_dig_gold():
 
 func has_digged_gold(what, amount):
 	assert_eq(what, "gold")
-	digged_gold_amount = amount
+	digged_gold_amount += amount
 	digged_gold = true
 	assert_eq(amount, 1.0*16*1.0)
+
+const PredefinedZone = preload("zone_2.tscn")
+
+func test_predefined_zone():
+	var zone = PredefinedZone.instance()
+	var site = zone.sites.site_a
+	do_test_dig_gold(site)

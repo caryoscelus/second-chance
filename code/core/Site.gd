@@ -27,11 +27,21 @@ const DataArray = preload("DataArray.gd")
 
 signal digged(what, amount)
 
+# MEH
+export(String, MULTILINE) var export_amount_density
+
 var amount = {}
 var density = {}
 
 func _init():
-	set("units", DataArray.new())
+	if export_amount_density:
+		var amount_density = {}
+		amount_density.parse_json(export_amount_density)
+		for resource in amount_density:
+			amount = int(amount_density[resource][0])
+			density = int(amount_density[resource][1])
+	if not has_node("units"):
+		set("units", DataArray.new())
 
 func apply_work(work):
 	"""Somebody worked on digging stuff.

@@ -40,8 +40,12 @@ func _init():
 		for resource in amount_density:
 			amount = int(amount_density[resource][0])
 			density = int(amount_density[resource][1])
+
+func _ready():
 	if not has_node("units"):
 		set("units", DataArray.new())
+	if not has_node("pos"):
+		set("pos", Position2D.new())
 
 func apply_work(work):
 	"""Somebody worked on digging stuff.

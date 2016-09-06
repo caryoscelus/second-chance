@@ -50,4 +50,6 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
+[connection signal="site_clicked" from="." to="." method="click_site_test"]
+
 

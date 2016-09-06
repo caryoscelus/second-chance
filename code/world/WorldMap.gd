@@ -63,3 +63,10 @@ func spawn_sites(zone, node):
 		site_node.set_pos(site.pos.get_pos())
 		site_node.connect("button_down", self, "emit_signal", ["site_clicked", site])
 		node.add_child(site_node)
+
+const LesserEventPopup = preload("res://scenes/world/LesserEventPopup.tscn")
+
+func click_site_test(site):
+	var popup = LesserEventPopup.instance()
+	popup.set_pos(site.pos.get_pos())
+	self.add_child(popup)

@@ -25,6 +25,16 @@ extends "DataContainer.gd"
 const DataArray = preload("DataArray.gd")
 const Distribution = preload("Distribution.gd")
 
+const DIGGABLE_RESOURCES = [
+	"gold",
+	"computer",
+	"rocket",
+	"nuclear",
+]
+const RESOURCES = [
+	"money",
+] + DIGGABLE_RESOURCES
+
 func _init():
 	set("zones", DataArray.new())
 	set("people", DataArray.new())

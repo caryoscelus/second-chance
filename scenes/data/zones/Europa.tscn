@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://code/core/Zone.gd" type="Script" id=1]
+[ext_resource path="res://code/core/DataArray.gd" type="Script" id=2]
+[ext_resource path="res://code/core/Site.gd" type="Script" id=3]
+
+[node name="Europa" type="Node"]
+
+script/script = ExtResource( 1 )
+name = null
+
+[node name="units" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+
+[node name="sites" type="Node" parent="."]
+
+script/script = ExtResource( 2 )
+
+[node name="site_a" type="Node" parent="sites"]
+
+script/script = ExtResource( 3 )
+export_amount_density = "{\n\t\"gold\" : [1024, 0.5],\n\t\"computer\" : [64, 0.025],\n}\n"
+
+

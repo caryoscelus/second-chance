@@ -24,12 +24,16 @@ extends TextureFrame
 
 signal zone_clicked(zone)
 
+var world = SCWorld
+
 onready var zones = get_node("zones")
 
 func _ready():
-	var world = SCWorld
 	# for test
 	world.zones.append(load("res://scenes/data/zones/Europa.tscn").instance())
+	spawn_zones()
+
+func spawn_zones():
 	for zone in world.zones.get_all():
 		var zone_node = TextureButton.new()
 		var gfx_path = "res://gfx/world/zone-%s"%zone.get_name()
@@ -45,8 +49,15 @@ func _ready():
 			label = Button.new()
 			label.connect("button_down", self, "emit_signal", ["zone_clicked", zone])
 		var pos = zone.pos.get_pos()
-		logger.warn(str(pos))
 		label.set_pos(pos)
 		label.set_text(zone.get_name())
 		zone_node.add_child(label)
+		spawn_sites(zone, zone_node)
 		zones.add_child(zone_node)
+
+func spawn_sites(zone, node):
+	for site in zone.sites.get_all():
+		var site_node = Button.new()
+		site_node.set_text(site.get_name())
+		site_node.set_pos(site.pos.get_pos())
+		node.add_child(site_node)

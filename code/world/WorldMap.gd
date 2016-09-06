@@ -23,6 +23,7 @@
 extends TextureFrame
 
 signal zone_clicked(zone)
+signal site_clicked(site)
 
 var world = SCWorld
 
@@ -60,4 +61,5 @@ func spawn_sites(zone, node):
 		var site_node = Button.new()
 		site_node.set_text(site.get_name())
 		site_node.set_pos(site.pos.get_pos())
+		site_node.connect("button_down", self, "emit_signal", ["site_clicked", site])
 		node.add_child(site_node)

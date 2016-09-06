@@ -22,4 +22,8 @@ script/script = ExtResource( 2 )
 script/script = ExtResource( 3 )
 export_amount_density = "{\n\t\"gold\" : [1024, 0.5],\n\t\"computer\" : [64, 0.025],\n}\n"
 
+[node name="pos" type="Position2D" parent="."]
+
+transform/pos = Vector2( 161.902, 265.395 )
+
 

@@ -36,7 +36,10 @@ func _ready():
 			var texture = load(gfx_path+".png")
 			zone_node.set_click_mask(mask)
 			zone_node.set_hover_texture(texture)
-		else:
-			# TODO: add some generic button
-			pass
+		var pos = zone.pos.get_pos()
+		logger.warn(str(pos))
+		var button = Button.new()
+		button.set_pos(pos)
+		button.set_text(zone.get_name())
+		zone_node.add_child(button)
 		zones.add_child(zone_node)

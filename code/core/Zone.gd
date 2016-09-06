@@ -25,10 +25,14 @@ extends "DataContainer.gd"
 const DataArray = preload("DataArray.gd")
 const People = preload("People.gd")
 
+export(String) var name
+
 var population = {}
 
-func _init():
+func _ready():
 	if not has_node("units"):
 		set("units", DataArray.new())
 	if not has_node("sites"):
 		set("sites", DataArray.new())
+	if not has_node("pos"):
+		set("pos", Position2D.new())

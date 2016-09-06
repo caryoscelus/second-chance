@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://code/core/Zone.gd" type="Script" id=1]
-[ext_resource path="res://code/core/DataContainer.gd" type="Script" id=2]
+[ext_resource path="res://code/core/DataArray.gd" type="Script" id=2]
 
 [node name="test_zone" type="Node"]
 

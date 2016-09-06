@@ -14,6 +14,7 @@ func teardown():
 func test_create():
 	zones.clear()
 	var zone = Zone.new()
+	zone._ready()
 	assert_ne(zone.units, null)
 	assert_true(zone.units extends DataArray)
 	assert_eq(zone.get_node("units"), zone.units)

@@ -22,6 +22,8 @@
 
 extends TextureFrame
 
+signal zone_clicked(zone)
+
 onready var zones = get_node("zones")
 
 func _ready():
@@ -32,14 +34,19 @@ func _ready():
 		var zone_node = TextureButton.new()
 		var gfx_path = "res://gfx/world/zone-%s"%zone.get_name()
 		var mask = load(gfx_path+".pbm")
+		var label
 		if mask != null:
 			var texture = load(gfx_path+".png")
 			zone_node.set_click_mask(mask)
 			zone_node.set_hover_texture(texture)
+			zone_node.connect("button_down", self, "emit_signal", ["zone_clicked", zone])
+			label = Label.new()
+		else:
+			label = Button.new()
+			label.connect("button_down", self, "emit_signal", ["zone_clicked", zone])
 		var pos = zone.pos.get_pos()
 		logger.warn(str(pos))
-		var button = Button.new()
-		button.set_pos(pos)
-		button.set_text(zone.get_name())
-		zone_node.add_child(button)
+		label.set_pos(pos)
+		label.set_text(zone.get_name())
+		zone_node.add_child(label)
 		zones.add_child(zone_node)

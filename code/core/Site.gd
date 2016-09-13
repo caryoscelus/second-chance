@@ -18,54 +18,18 @@
 ##  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-## Site - excavation site
+## Site - excavation or research site
 
 extends "DataContainer.gd"
 
 const DataContainer = preload("DataContainer.gd")
 const DataArray = preload("DataArray.gd")
 
-signal digged(what, amount)
-
-# MEH
-export(String, MULTILINE) var export_amount_density
-
-var amount = {}
-var density = {}
-
 func _init():
-	if export_amount_density:
-		var amount_density = {}
-		amount_density.parse_json(export_amount_density)
-		for resource in amount_density:
-			amount = int(amount_density[resource][0])
-			density = int(amount_density[resource][1])
+	._init()
 
 func _ready():
 	if not has_node("units"):
 		set("units", DataArray.new())
 	if not has_node("pos"):
 		set("pos", Position2D.new())
-
-func apply_work(work):
-	"""Somebody worked on digging stuff.
-	
-	`work` is a dictionary of amount of work distributed among digging resources
-	work spent on resources that are not here is wasted
-	"""
-	var result = {}
-	for resource in amount:
-		var could_dig = World.distribution.from_density(work[resource], density[resource])
-		var digged = max(min(could_dig, amount[resource]), 0)
-		amount[resource] -= digged
-		if digged > 0:
-			result[resource] = digged
-		if amount[resource] <= 0:
-			amount.remove(resource)
-			density.remove(resource)
-	notify_digged(result)
-	return result
-
-func notify_digged(resources):
-	for resource in resources:
-		emit_signal("digged", resource, resources[resource])

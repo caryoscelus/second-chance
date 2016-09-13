@@ -24,17 +24,20 @@
 
 extends Node
 
+func get_all():
+	return get_children()
+
 func _get(name):
 	if typeof(name) == TYPE_STRING:
 		return get_node(name)
 	return null
 
-func _set(name, value):
+func set(name, value):
 	if typeof(value) == TYPE_OBJECT:
 		value.set_name(name)
 		add_child(value)
 	else:
-		._set(self, name, value)
+		.set(name, value)
 
 func _get_property_list():
 	var props = []

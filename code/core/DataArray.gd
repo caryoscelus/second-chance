@@ -34,9 +34,6 @@ func append(element):
 func remove(element):
 	remove_child(element)
 
-func get_all():
-	return get_children()
-
 func clear():
 	var all = get_all()
 	for element in all:

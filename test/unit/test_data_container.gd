@@ -24,7 +24,7 @@ func test_set():
 	var node = Node.new()
 	#container["abc"] = node
 	#container.abc = node
-	container._set("abc", node)
+	container.set("abc", node)
 	assert_eq(container.abc, node)
 	assert_eq(node.get_name(), "abc")
 

@@ -9,6 +9,7 @@
 [node name="site_a" parent="sites" instance=ExtResource( 2 )]
 
 script/script = ExtResource( 3 )
+export_amount_density = null
 
 [node name="pos" parent="sites/site_a"]
 

@@ -4,14 +4,15 @@ extends "../gut/gut.gd".Test
 
 const ExcavateUnit = preload("res://code/core/ExcavateUnit.gd")
 const People = preload("res://code/core/People.gd")
-const Site = preload("res://code/core/Site.gd")
+const ExcavateSite = preload("res://code/core/ExcavateSite.gd")
 
 func test_dig_gold():
 	var workers_1 = People.new()
 	workers_1.profession = "worker"
 	workers_1.skill = 1.0
 	SCWorld.people.set("workers_1", workers_1)
-	var site = Site.new()
+	var site = ExcavateSite.new()
+	site._ready()
 	site.amount = {gold=1024}
 	site.density = {gold=0.5}
 	
@@ -45,4 +46,5 @@ const PredefinedZone = preload("zone_2.tscn")
 func test_predefined_zone():
 	var zone = PredefinedZone.instance()
 	var site = zone.sites.site_a
+	site._ready()
 	do_test_dig_gold(site)

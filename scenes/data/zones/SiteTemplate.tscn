@@ -1,11 +1,6 @@
-[gd_scene load_steps=2 format=1]
-
-[ext_resource path="res://code/core/Site.gd" type="Script" id=1]
+[gd_scene format=1]
 
 [node name="SiteTemplate" type="Node"]
-
-script/script = ExtResource( 1 )
-export_amount_density = null
 
 [node name="pos" type="Position2D" parent="."]
 

@@ -30,8 +30,6 @@ export(String) var name
 var population = {}
 
 func _ready():
-	if not has_node("units"):
-		set("units", DataArray.new())
 	if not has_node("sites"):
 		set("sites", DataArray.new())
 	if not has_node("pos"):

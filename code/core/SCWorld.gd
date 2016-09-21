@@ -41,6 +41,12 @@ const RESOURCES = [
 	"money",
 ] + DIGGABLE_RESOURCES
 
+func empty_resources():
+	var e = {}
+	for res in RESOURCES:
+		e[res] = 0.0
+	return e
+
 func _init():
 	set("zones", DataArray.new())
 	set("people", DataArray.new())

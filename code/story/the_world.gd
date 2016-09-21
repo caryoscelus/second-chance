@@ -18,14 +18,11 @@
 ##  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-## main test menu: choose test options
+## Set up world
 
-extends TextureFrame
+extends Node
 
-func on_menu_clicked(idx):
-	if idx == 0:
-		get_tree().change_scene("res://scenes/story/Intro.tscn")
-	elif idx == 1:
-		get_tree().change_scene("res://scenes/")
-	elif idx == 2:
-		get_tree().change_scene("res://scenes/story/TheWorld.tscn")
+var world = SCWorld
+
+func _init():
+	world.zones.append(load("res://scenes/data/zones/Europa.tscn").instance())

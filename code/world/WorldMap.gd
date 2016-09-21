@@ -30,8 +30,6 @@ var world = SCWorld
 onready var zones = get_node("zones")
 
 func _ready():
-	# for test
-	world.zones.append(load("res://scenes/data/zones/Europa.tscn").instance())
 	spawn_zones()
 
 func spawn_zones():

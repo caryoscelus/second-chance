@@ -41,3 +41,6 @@ func get_power(profession):
 		if people.profession == profession:
 			return population[people_kind] * people.skill
 	return total
+
+func process(dt):
+	pass

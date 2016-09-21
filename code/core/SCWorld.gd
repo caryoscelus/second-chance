@@ -22,8 +22,14 @@
 
 extends "DataContainer.gd"
 
+signal time_tick(dt)
+
 const DataArray = preload("DataArray.gd")
 const Distribution = preload("Distribution.gd")
+
+var active = true
+var time_scale = 1.0
+var time = 0.0
 
 const DIGGABLE_RESOURCES = [
 	"gold",
@@ -39,3 +45,12 @@ func _init():
 	set("zones", DataArray.new())
 	set("people", DataArray.new())
 	set("distribution", Distribution.new())
+	set_process(true)
+
+func _process(dt):
+	if active:
+		var dts = dt*time_scale
+		time += dts
+		emit_signal("time_tick", dts)
+		for zone in self.zones.get_all():
+			zone.process(dts)

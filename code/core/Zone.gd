@@ -34,3 +34,7 @@ func _ready():
 		set("sites", DataArray.new())
 	if not has_node("pos"):
 		set("pos", Position2D.new())
+
+func process(dt):
+	for site in self.sites.get_all():
+		site.process(dt)

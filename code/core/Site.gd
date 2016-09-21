@@ -33,3 +33,7 @@ func _ready():
 		set("units", DataArray.new())
 	if not has_node("pos"):
 		set("pos", Position2D.new())
+
+func process(dt):
+	for unit in self.units.get_all():
+		unit.process(dt)

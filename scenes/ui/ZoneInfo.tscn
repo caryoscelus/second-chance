@@ -1,0 +1,211 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://code/ui/ZoneInfo.gd" type="Script" id=1]
+
+[node name="ZoneInfo" type="PanelContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 229.0
+margin/bottom = 214.0
+script/script = ExtResource( 1 )
+
+[node name="box" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 222.0
+margin/bottom = 207.0
+alignment = 0
+
+[node name="name" type="Label" parent="box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 215.0
+margin/bottom = 14.0
+text = "Zone Name"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="resources_label" type="Label" parent="box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 215.0
+margin/bottom = 32.0
+text = ">resources"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="resources" type="HBoxContainer" parent="box"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 36.0
+margin/right = 215.0
+margin/bottom = 50.0
+alignment = 0
+
+[node name="names" type="VBoxContainer" parent="box/resources"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 60.0
+margin/bottom = 14.0
+alignment = 0
+
+[node name="template" type="Label" parent="box/resources/names"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 60.0
+margin/bottom = 14.0
+text = "resource:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="values" type="VBoxContainer" parent="box/resources"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 64.0
+margin/top = 0.0
+margin/right = 84.0
+margin/bottom = 14.0
+alignment = 0
+
+[node name="template" type="Label" parent="box/resources/values"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 20.0
+margin/bottom = 14.0
+text = "0.0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="population_label" type="Label" parent="box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 54.0
+margin/right = 215.0
+margin/bottom = 68.0
+text = ">population"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="population" type="HBoxContainer" parent="box"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 72.0
+margin/right = 215.0
+margin/bottom = 86.0
+alignment = 0
+
+[node name="names" type="VBoxContainer" parent="box/population"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 48.0
+margin/bottom = 14.0
+alignment = 0
+
+[node name="template" type="Label" parent="box/population/names"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 48.0
+margin/bottom = 14.0
+text = "people:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="values" type="VBoxContainer" parent="box/population"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 52.0
+margin/top = 0.0
+margin/right = 72.0
+margin/bottom = 14.0
+alignment = 0
+
+[node name="template" type="Label" parent="box/population/values"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 20.0
+margin/bottom = 14.0
+text = "0.0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

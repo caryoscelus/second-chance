@@ -25,6 +25,8 @@ extends "DataContainer.gd"
 const DataContainer = preload("DataContainer.gd")
 const DataArray = preload("DataArray.gd")
 
+var type = ""
+
 func _init():
 	._init()
 

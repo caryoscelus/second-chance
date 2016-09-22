@@ -32,6 +32,7 @@ var density = {}
 
 func _init():
 	._init()
+	type = "excavate"
 	if export_amount_density:
 		var amount_density = {}
 		amount_density.parse_json(export_amount_density)

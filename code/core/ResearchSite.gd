@@ -24,6 +24,10 @@ extends "Site.gd"
 
 signal researched()
 
+func _init():
+	._init()
+	type = "research"
+
 func apply_work(work):
 	"""Somebody worked on researching stuff."""
 	var result = {}

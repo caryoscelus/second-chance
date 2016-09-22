@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://code/ui/SiteInfo.gd" type="Script" id=1]
+
+[node name="SiteInfo" type="PanelContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 216.0
+margin/bottom = 182.0
+script/script = ExtResource( 1 )
+
+[node name="box" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 209.0
+margin/bottom = 175.0
+alignment = 0
+
+[node name="name" type="Label" parent="box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 202.0
+margin/bottom = 14.0
+text = "Site"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="type" type="Label" parent="box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 202.0
+margin/bottom = 32.0
+text = "Of type"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="units" type="VButtonArray" parent="box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 36.0
+margin/right = 202.0
+margin/bottom = 36.0
+button/count = 0
+button/min_button_size = -1.0
+button/align = 0
+
+[node name="container" type="Container" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 209.0
+margin/bottom = 175.0
+
+[node name="close" type="Button" parent="container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 178.0
+margin/top = 0.0
+margin/right = 202.0
+margin/bottom = 24.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "x"
+flat = false
+
+[connection signal="pressed" from="container/close" to="." method="queue_free"]
+
+

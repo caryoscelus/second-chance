@@ -62,23 +62,24 @@ func spawn_sites(zone, node):
 		site_node.connect("button_down", self, "emit_signal", ["site_clicked", site])
 		node.add_child(site_node)
 
-const LesserEventPopup = preload("res://scenes/world/LesserEventPopup.tscn")
-
-func click_site_test(site):
-	var popup = LesserEventPopup.instance()
-	popup.set_pos(site.pos.get_pos())
-	self.add_child(popup)
+onready var infos = get_node("infos")
 
 const ZoneInfo = preload("res://scenes/ui/ZoneInfo.tscn")
 
-onready var zone_infos = get_node("zone_infos")
-
 func show_zone_info(zone):
-	var old_info = zone_infos.get_node(zone.name)
+	var old_info = infos.get_node(zone.name)
 	if old_info != null:
 		old_info.queue_free()
 		return
 	var info = ZoneInfo.instance()
 	info.set_zone(zone)
 	info.set_pos(zone.pos.get_pos())
-	zone_infos.add_child(info)
+	infos.add_child(info)
+
+const SiteInfo = preload("res://scenes/ui/SiteInfo.tscn")
+
+func show_site_info(site):
+	var info = SiteInfo.instance()
+	info.set_site(site)
+	info.set_pos(site.pos.get_pos())
+	infos.add_child(info)

@@ -26,15 +26,25 @@ onready var name = get_node("box/name")
 onready var resources = get_node("box/resources")
 onready var population = get_node("box/population")
 
+var is_ready = false
 var zone
 
 func _ready():
+	is_ready = true
+	update()
+
+func set_zone(new_zone):
+	zone = new_zone
 	update()
 
 func update():
+	if not is_ready:
+		return
 	clear()
 	if zone == null:
 		return
+	if zone.name:
+		set_name(zone.name)
 	name.set_text(str(zone.name))
 	update_resources()
 	update_population()

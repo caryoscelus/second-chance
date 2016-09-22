@@ -68,3 +68,17 @@ func click_site_test(site):
 	var popup = LesserEventPopup.instance()
 	popup.set_pos(site.pos.get_pos())
 	self.add_child(popup)
+
+const ZoneInfo = preload("res://scenes/ui/ZoneInfo.tscn")
+
+onready var zone_infos = get_node("zone_infos")
+
+func show_zone_info(zone):
+	var old_info = zone_infos.get_node(zone.name)
+	if old_info != null:
+		old_info.queue_free()
+		return
+	var info = ZoneInfo.instance()
+	info.set_zone(zone)
+	info.set_pos(zone.pos.get_pos())
+	zone_infos.add_child(info)

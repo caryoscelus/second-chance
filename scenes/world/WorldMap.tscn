@@ -30,6 +30,8 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 
+[node name="zone_infos" type="Node2D" parent="."]
+
 [node name="camera" type="Camera2D" parent="."]
 
 anchor_mode = 0
@@ -51,5 +53,7 @@ drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
 [connection signal="site_clicked" from="." to="." method="click_site_test"]
+
+[connection signal="zone_clicked" from="." to="." method="show_zone_info"]
 
 

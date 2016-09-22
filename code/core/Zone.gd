@@ -28,8 +28,11 @@ const People = preload("People.gd")
 export(String) var name
 
 var population = {}
+var resources = SCWorld.empty_resources()
 
 func _ready():
+	if name == null:
+		name = get_name()
 	if not has_node("sites"):
 		set("sites", DataArray.new())
 	if not has_node("pos"):

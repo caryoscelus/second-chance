@@ -31,7 +31,7 @@ func get_amount(profession):
 	for people_kind in population:
 		var people = SCWorld.people[people_kind]
 		if people.profession == profession:
-			return population[people_kind]
+			total += population[people_kind]
 	return total
 
 func get_power(profession):
@@ -39,7 +39,7 @@ func get_power(profession):
 	for people_kind in population:
 		var people = SCWorld.people[people_kind]
 		if people.profession == profession:
-			return population[people_kind] * people.skill
+			total += population[people_kind] * people.skill
 	return total
 
 func process(dt):
